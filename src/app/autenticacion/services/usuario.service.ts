@@ -18,6 +18,10 @@ export class UsuarioService {
 
   }
 
+  getUsuarioAutenticado(): UsuarioM | undefined{
+    return this._usuario;
+  }
+
   agregarNuevoUsuario(nuevoUsuario: UsuarioM) {
     return this.http.post<UsuarioM>(`${this.baseUrl}?accion=crear`, nuevoUsuario).pipe(
       tap(resp => {

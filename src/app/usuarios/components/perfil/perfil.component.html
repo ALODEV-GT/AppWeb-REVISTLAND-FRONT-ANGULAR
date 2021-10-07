@@ -8,8 +8,13 @@
     <mat-card-content id="contenido">
 
       <div id="izquierda">
-        <img class="imagen"
-          src="https://img.freepik.com/vector-gratis/ilustracion-vector-dibujos-animados-lindo-corgi-beber-leche-te-boba-bebida-animal-concepto-aislado-vector-estilo-dibujos-animados-plana_138676-1943.jpg?size=338&ext=jpg" />
+        <div>
+          <img class="imagen"
+            src="../../../../assets/imagenes/no-image.png" />
+        </div>
+        <div class="nombre-usuario">
+          <!-- @{{usuario?.nombre}} -->
+        </div>
       </div>
 
       <div id="derecha">
@@ -18,19 +23,19 @@
           <div class="text-area">
             <div class="subtitulo">Descripcion</div>
             <mat-form-field class="full-width" appearance="fill">
-              <textarea matInput></textarea>
+              <textarea formControlName="descripcion" matInput></textarea>
             </mat-form-field>
           </div><br>
           <div class="text-area">
             <div class="subtitulo">Hobbies</div>
             <mat-form-field class="full-width" appearance="fill">
-              <textarea matInput></textarea>
+              <textarea formControlName="hobbies" matInput></textarea>
             </mat-form-field>
           </div><br>
           <div class="text-area">
             <div class="subtitulo">Gustos</div>
             <mat-form-field class="full-width" appearance="fill">
-              <textarea matInput></textarea>
+              <textarea formControlName="gustos" matInput></textarea>
             </mat-form-field>
           </div>
         </div>
