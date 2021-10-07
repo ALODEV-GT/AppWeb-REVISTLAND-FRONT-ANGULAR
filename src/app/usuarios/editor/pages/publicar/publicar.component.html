@@ -1,0 +1,70 @@
+<div class="contenedor">
+  <div>
+    <div class="cuadrado"></div>
+    <div>
+      <mat-card class="tamano redondear">
+        <div>
+          <mat-card-header id="header" class="centrar">
+            <br />
+            Nueva revista
+          </mat-card-header>
+        </div>
+        <div>
+          <mat-form-field class="full-width elemento" appearance="legacy">
+            <mat-label>Nombre de revista</mat-label>
+            <input type="text" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" style="font-size: 23px;" appearance="outline">
+            <mat-label>Descripcion</mat-label>
+            <textarea class="text-area" matInput></textarea>
+          </mat-form-field>
+
+          <div>
+            <div class="subtitulo elemento">Categorias</div>
+            <div class="example-button-container">
+              <button
+                mat-mini-fab
+                color="primary"
+                aria-label="Example icon button with a menu icon"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div>
+            <div class="subtitulo elemento">Etiquetas</div>
+            <div class="example-button-container">
+              <button
+                mat-mini-fab
+                color="primary"
+                aria-label="Example icon button with a menu icon"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+          <mat-form-field class="full-width elemento" appearance="outline">
+            <mat-label>Costo de suscripcion</mat-label>
+            <input type="number" matInput />
+          </mat-form-field>
+
+          <div class="elemento">
+            <label>Fecha de publicacion: </label>
+            <input type="date" class="select-date" />
+          </div>
+
+          <button mat-raised-button class="full-width elemento" color="primary">
+            Subir primer volumen
+          </button>
+          <div class="boton">
+            <button mat-raised-button class="elemento" color="accent">
+              Publicar
+            </button>
+          </div>
+        </div>
+        <mat-card-content id="contenido"> </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

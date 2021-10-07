@@ -1,0 +1,45 @@
+<div *ngIf="!mostrarNavBar">
+    <mat-toolbar class="toolbar">
+        <span>REVISTLAND</span>
+
+        <span class="spacer"></span>
+
+        <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+        </span>
+        <mat-form-field class="full-width buscador" appearance="legacy">
+            <input matInput placeholder="Buscar">
+        </mat-form-field>
+
+        <span class="spacer"></span>
+
+        <button class="boton" mat-raised-button color="primary">Mis revistas</button>
+
+        <span class="spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                    <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                </svg>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>person</mat-icon>
+                <span>Perfil</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>logout</mat-icon>
+                <span>Salir</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+</div>
+
+<app-perfil *ngIf="mostrarNavBar"></app-perfil>
+
+<router-outlet> </router-outlet>

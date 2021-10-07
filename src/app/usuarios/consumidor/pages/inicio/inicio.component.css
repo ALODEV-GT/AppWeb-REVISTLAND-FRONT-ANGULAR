@@ -1,0 +1,21 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+  .full-width {
+    width: 60%;
+  }
+
+  .toolbar {
+    height: 100px;
+  }
+
+  .buscador{
+      font-size: 25px;
+  }
+
+  .boton{
+      height: 50%;
+      width: 10%;
+      font-size: 25px;
+  }

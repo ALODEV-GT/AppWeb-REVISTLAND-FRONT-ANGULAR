@@ -1,0 +1,42 @@
+
+
+.registro{
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.login {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+
+.redondear{
+    border-radius: 20px;
+}
+
+.vinculo{
+    color: white;
+    font-size: 18px;
+}
+
+.tamano-titulo{
+    font-size: 30px;
+}
+
+.margen{
+    margin: 15px 30px;
+}
+
+.tamano-letra{
+    font-size: 20px;
+}
+
+.borde-icono {
+    border: 11px solid white;
+    padding: 10px;
+    border-radius: 130px;
+}
+

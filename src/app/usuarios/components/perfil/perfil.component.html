@@ -1,0 +1,73 @@
+<div class="fondo">
+
+  <mat-card class="tamano redondear">
+    <mat-card-header id="header" class="centrar">
+      <h1 class="titulo">PERFIL</h1>
+    </mat-card-header>
+
+    <mat-card-content id="contenido">
+
+      <div id="izquierda">
+        <img class="imagen"
+          src="https://img.freepik.com/vector-gratis/ilustracion-vector-dibujos-animados-lindo-corgi-beber-leche-te-boba-bebida-animal-concepto-aislado-vector-estilo-dibujos-animados-plana_138676-1943.jpg?size=338&ext=jpg" />
+      </div>
+
+      <div id="derecha">
+
+        <div id="descripcion">
+          <div class="text-area">
+            <div class="subtitulo">Descripcion</div>
+            <mat-form-field class="full-width" appearance="fill">
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div><br>
+          <div class="text-area">
+            <div class="subtitulo">Hobbies</div>
+            <mat-form-field class="full-width" appearance="fill">
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div><br>
+          <div class="text-area">
+            <div class="subtitulo">Gustos</div>
+            <mat-form-field class="full-width" appearance="fill">
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div id="vacio"></div>
+
+        <div id="preferencias">
+          <div id="titulo-pref">
+            <div class="subtitulo">PREFERENCIAS</div>
+          </div>
+          <div id="categorias">
+            <div class="subtitulo">Categorias</div>
+            <br>
+            <mat-chip-list aria-label="Fish selection">
+              <mat-chip>One fish</mat-chip>
+              <mat-chip>Two fish</mat-chip>
+              <mat-chip color="primary" selected>Primary fish</mat-chip>
+              <mat-chip color="accent" selected>Accent fish</mat-chip>
+            </mat-chip-list>
+          </div>
+          <div id="etiquetas">
+            <div class="subtitulo">Etiquetas</div>
+            <br>
+            <mat-chip-list aria-label="Fish selection">
+              <mat-chip>One fish</mat-chip>
+              <mat-chip>Two fish</mat-chip>
+              <mat-chip color="primary" selected>Primary fish</mat-chip>
+              <mat-chip color="accent" selected>Accent fish</mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+
+        <div id="footer">
+          <mat-card-actions class="mat-action">
+            <button mat-raised-button color="primary" class="boton">Guardar</button>
+          </mat-card-actions>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

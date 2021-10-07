@@ -1,0 +1,43 @@
+<div class="body">
+  <div class="login">
+    <mat-card class="redondear">
+
+      <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+        <mat-card-title class="margen">
+          <svg xmlns="http://www.w3.org/2000/svg" width="175" height="175" fill="#fff" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+        </mat-card-title>
+        <h2 class="tamano-titulo margen">INICIAR SESION</h2>
+      </mat-card-header>
+      <span *ngIf="noExiste" class="form-text text-danger">
+        Esta cuenta no existe.
+      </span>
+
+      <form (ngSubmit)='autenticarUsuario()' autocomplete="off" [formGroup]="miFormulario">
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutAlign="center ">
+            <mat-form-field appearance="fill" class="margen">
+              <mat-label>Nombre de usuario</mat-label>
+              <input formControlName="nombre" matInput type="text" class="tamano-letra">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="margen">
+              <mat-label>Contraseña</mat-label>
+              <input  formControlName="contrasena" matInput type="password" class="tamano-letra">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions fxLayoutAlign="center center" fxLayout="column">
+          <button mat-raised-button color="primary" class="tamano-letra">Ingresar</button>
+          <br>
+          <a routerLink='/autenticacion/registro' class="vinculo" href="#">Crear una cuenta</a>
+        </mat-card-actions>
+      </form>
+
+    </mat-card>
+  </div>
+</div>

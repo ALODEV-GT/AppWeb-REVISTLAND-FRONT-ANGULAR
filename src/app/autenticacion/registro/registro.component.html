@@ -1,0 +1,80 @@
+<div class="body">
+  <div class="registro">
+    <mat-card class="redondear">
+
+      <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+        <mat-card-title class="margen">
+          <svg xmlns="http://www.w3.org/2000/svg" width="138" height="138" fill="currentColor"
+            class="bi bi-person-plus-fill borde-icono" viewBox="0 0 16 16">
+            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            <path fill-rule="evenodd"
+              d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+          </svg>
+        </mat-card-title>
+        <h2 class="tamano-titulo margen">REGISTRARSE</h2>
+      </mat-card-header>
+
+      <form (ngSubmit)='crearUsuario()' autocomplete="off" [formGroup]="miFormulario">
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutAlign="center">
+
+
+            <span *ngIf="campoEsValido('nombre')" class="form-text text-danger">
+              {{getErrorNombre()}}
+            </span>
+
+            <mat-form-field appearance="fill" class="margen">
+              <mat-label>Ingrese un nombre de usuario</mat-label>
+              <input matInput formControlName="nombre" type="text" class="tamano-letra">
+            </mat-form-field>
+            <span *ngIf="campoEsValido('pContrasena')" class="form-text text-danger">
+              Debe ser mayor a 5 caracteres
+            </span>
+            <mat-form-field appearance="fill" class="margen">
+              <mat-label>Ingrese la contrasena</mat-label>
+              <input matInput formControlName="pContrasena" type="password" class="tamano-letra">
+            </mat-form-field>
+            <span *ngIf="campoEsValido('sContrasena')" class="form-text text-danger">
+              Las contrasenas no coinciden
+            </span>
+            <mat-form-field appearance="fill" class="margen">
+              <mat-label>Vuelva a ingresar la contrasena</mat-label>
+              <input matInput formControlName="sContrasena" type="password" class="tamano-letra">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="margen">
+              <mat-label>Tipo de cuenta</mat-label>
+              <mat-select formControlName="tipoCuenta">
+                <mat-option *ngFor="let tipo of tiposCuenta" [value]="tipo">
+                  {{tipo}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions fxLayoutAlign="center center" fxLayout="column">
+          <button mat-flat-button type="submit" color="primary" [disabled]="miFormulario.pending" class="tamano-letra">
+            Registrarse
+          </button>
+          <br>
+        </mat-card-actions>
+      </form>
+
+    </mat-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h5>Valid</h5>
+    <pre>{{miFormulario.valid}}</pre>
+
+    <h5>Form errors</h5>
+    <pre>{{miFormulario.errors | json}}</pre>
+
+    <h5>Nombre Usuario</h5>
+    <pre>{{miFormulario.controls.nombre.errors | json}}</pre>
+
+  </div>
+</div>
