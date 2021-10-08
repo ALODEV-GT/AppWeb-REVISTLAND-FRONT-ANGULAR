@@ -10,7 +10,7 @@ export class UsuarioService {
 
 
 
-  private _usuario: UsuarioM | undefined;
+  private _usuario: UsuarioM | undefined; //Usuario en sesion
 
   private baseUrl: string = "http://localhost:8080/REVISTLAND/controladorAutenticacion";
 

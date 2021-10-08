@@ -6,73 +6,114 @@
     </mat-card-header>
 
     <mat-card-content id="contenido">
+      <form (ngSubmit)='guardarPerfil()' autocomplete="off" [formGroup]="formularioPerfil">
 
-      <div id="izquierda">
-        <div>
-          <img class="imagen"
-            src="../../../../assets/imagenes/no-image.png" />
-        </div>
-        <div class="nombre-usuario">
-          <!-- @{{usuario?.nombre}} -->
-        </div>
-      </div>
-
-      <div id="derecha">
-
-        <div id="descripcion">
-          <div class="text-area">
-            <div class="subtitulo">Descripcion</div>
-            <mat-form-field class="full-width" appearance="fill">
-              <textarea formControlName="descripcion" matInput></textarea>
-            </mat-form-field>
-          </div><br>
-          <div class="text-area">
-            <div class="subtitulo">Hobbies</div>
-            <mat-form-field class="full-width" appearance="fill">
-              <textarea formControlName="hobbies" matInput></textarea>
-            </mat-form-field>
-          </div><br>
-          <div class="text-area">
-            <div class="subtitulo">Gustos</div>
-            <mat-form-field class="full-width" appearance="fill">
-              <textarea formControlName="gustos" matInput></textarea>
-            </mat-form-field>
+        <div id="izquierda">
+          <div>
+            <img class="imagen" src="../../../../assets/imagenes/no-image.png" />
+          </div>
+          <div class="nombre-usuario">
+            @{{usuario?.nombre}}
           </div>
         </div>
-        <div id="vacio"></div>
 
-        <div id="preferencias">
-          <div id="titulo-pref">
-            <div class="subtitulo">PREFERENCIAS</div>
+        <div id="derecha">
+
+          <div id="descripcion">
+            <div class="text-area">
+              <div class="subtitulo">Descripcion</div>
+              
+              <mat-form-field class="full-width" appearance="outline">
+                <textarea formControlName="descripcion" matInput></textarea>
+              </mat-form-field>
+            </div><br>
+            <div class="text-area">
+              <div class="subtitulo">Hobbies</div>
+              <mat-form-field class="full-width" appearance="outline">
+                <textarea formControlName="hobbies" matInput></textarea>
+              </mat-form-field>
+            </div><br>
+            <div class="text-area">
+              <div class="subtitulo">Gustos</div>
+              <mat-form-field class="full-width" appearance="outline">
+                <textarea formControlName="gustos" matInput></textarea>
+              </mat-form-field>
+            </div>
           </div>
-          <div id="categorias">
-            <div class="subtitulo">Categorias</div>
+          <div id="vacio"></div>
+
+          <div id="preferencias">
+            <div id="titulo-pref">
+              <div class="subtitulo">PREFERENCIAS</div>
+            </div>
             <br>
-            <mat-chip-list aria-label="Fish selection">
-              <mat-chip>One fish</mat-chip>
-              <mat-chip>Two fish</mat-chip>
-              <mat-chip color="primary" selected>Primary fish</mat-chip>
-              <mat-chip color="accent" selected>Accent fish</mat-chip>
-            </mat-chip-list>
-          </div>
-          <div id="etiquetas">
-            <div class="subtitulo">Etiquetas</div>
-            <br>
-            <mat-chip-list aria-label="Fish selection">
-              <mat-chip>One fish</mat-chip>
-              <mat-chip>Two fish</mat-chip>
-              <mat-chip color="primary" selected>Primary fish</mat-chip>
-              <mat-chip color="accent" selected>Accent fish</mat-chip>
-            </mat-chip-list>
-          </div>
-        </div>
+            <div id="categorias">
+              <div class="subtitulo">Categorias</div>
+              <div *ngIf="!hayCategorias" class="form-text text-danger">
+                Almenos selecciona una categoria
+              </div>
+              <mat-form-field appearance="outline">
+                <mat-label>Seleccionar</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let categoria of allCategorias" [value]="categoria"
+                    (click)="agregarCategoria(categoria)">
+                    {{categoria | titlecase}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
 
-        <div id="footer">
-          <mat-card-actions class="mat-action">
-            <button mat-raised-button color="primary" class="boton">Guardar</button>
-          </mat-card-actions>
+
+              <mat-chip-list>
+                <mat-chip color="accent" selected *ngFor="let categoria of categorias">
+                  {{categoria | titlecase}}
+                  <button matChipRemove>
+                    <mat-icon (click)="cancelarCategoria(categoria)">cancel</mat-icon>
+                  </button>
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+            <br>
+            <div id="etiquetas">
+              <div class="subtitulo">Etiquetas</div>
+              
+              <div *ngIf="!hayEtiquetas" class="form-text text-danger">
+                Almenos selecciona una etiqueta
+              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Seleccionar</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let etiqueta of allEtiquetas" [value]="etiqueta"
+                    (click)="agregarEtiqueta(etiqueta)">
+                    {{etiqueta | titlecase}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip color="warn" selected *ngFor="let etiqueta of etiquetas" [selectable]="selectable"
+                    [removable]="removable" (removed)="remove(etiqueta)">
+                    {{etiqueta | titlecase}}
+                    <button matChipRemove *ngIf="removable">
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="Agregar nueva etiqueta" [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>
+            </div>
+          </div>
+          <br>
+          <div id="footer">
+            <mat-card-actions class="mat-action">
+              <button mat-raised-button color="primary" class="boton">Guardar</button>
+            </mat-card-actions>
+          </div>
         </div>
-      </div>
+      </form>
     </mat-card-content>
   </mat-card>
 </div>

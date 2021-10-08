@@ -8,15 +8,16 @@
 
 .tamano{
     width: 40%;
-    height: 85%;
+    height: max-content;
 }
 
-.fondo{
+.fondo {
     display: flex;
     justify-content: center;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     align-items: center;
-    background-color:#7B1FA2;
+    background-color: #7B1FA2;
 }
 
 .centrar{
@@ -51,6 +52,7 @@
 
 .boton{
     width: 50%;
+    font-size: 25px;
 }
 
 .mat-action{
@@ -83,6 +85,7 @@
 
 #vacio{
     height: 10%;
+    background:saddlebrown;
 }
 
 #footer{

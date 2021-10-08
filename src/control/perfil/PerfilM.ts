@@ -1,33 +1,38 @@
-import { CategoriaM } from './CategoriaM';
-import { EtiquetaM } from './EtiquetaM';
 import { FotoM } from './FotoM';
 export class PerfilM {
-
+    
     constructor(
+        private _nombreUsuario: string,
         private _descripcion: string,
         private _hobbies: string,
         private _gustos: string,
-        private _categorias: CategoriaM[],
-        private _etiquetas: EtiquetaM[],
+        private _categorias: string[],
+        private _etiquetas: string[],
         private _foto: FotoM
     ) { }
 
+    public get nombreUsuario(): string {
+        return this._nombreUsuario;
+    }
+    public set nombreUsuario(value: string) {
+        this._nombreUsuario = value;
+    }
     public get foto(): FotoM {
         return this._foto;
     }
     public set foto(value: FotoM) {
         this._foto = value;
     }
-    public get etiquetas(): EtiquetaM[] {
+    public get etiquetas(): string[] {
         return this._etiquetas;
     }
-    public set etiquetas(value: EtiquetaM[]) {
+    public set etiquetas(value: string[]) {
         this._etiquetas = value;
     }
-    public get categorias(): CategoriaM[] {
+    public get categorias(): string[] {
         return this._categorias;
     }
-    public set categorias(value: CategoriaM[]) {
+    public set categorias(value: string[]) {
         this._categorias = value;
     }
     public get gustos(): string {

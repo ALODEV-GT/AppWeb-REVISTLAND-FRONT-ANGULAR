@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
+    ReactiveFormsModule
   ],
   exports: [
     PerfilComponent
