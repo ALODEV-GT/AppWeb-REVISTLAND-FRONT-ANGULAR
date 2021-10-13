@@ -44,7 +44,6 @@ export class LoginComponent {
       } else {
 
         this.usuarioService.verificarTienePerfil(resp.nombre).subscribe((m) => {
-          console.log('tamano: ', m.length)
           if (m.length == undefined) {
             switch (resp.idTipoCuenta) {
               case 1:

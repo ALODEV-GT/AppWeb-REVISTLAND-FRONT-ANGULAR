@@ -8,6 +8,7 @@ import { UsuariosModule } from '../usuarios.module';
 import { PublicarComponent } from './pages/publicar/publicar.component';
 import { RevistaPublicadaComponent } from './components/revista-publicada/revista-publicada.component';
 import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,8 @@ import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.componen
     EditorRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    UsuariosModule
+    UsuariosModule,
+    ReactiveFormsModule
   ]
 })
 export class EditorModule { }

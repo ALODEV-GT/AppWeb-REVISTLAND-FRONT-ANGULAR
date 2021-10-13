@@ -8,14 +8,12 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent implements OnInit {
 
-  mostrarNavBar: boolean = true;
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    
+  }
 
   ngOnInit(): void {
-    if (!this.router.url.includes('perfil')) {
-      this.mostrarNavBar=false;
-    }
+
   }
 
 }

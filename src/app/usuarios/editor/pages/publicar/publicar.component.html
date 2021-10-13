@@ -9,60 +9,114 @@
             Nueva revista
           </mat-card-header>
         </div>
-        <div>
+        <form (ngSubmit)='publicarRevista()' autocomplete="off" [formGroup]="miFormulario">
           <mat-form-field class="full-width elemento" appearance="legacy">
             <mat-label>Nombre de revista</mat-label>
-            <input type="text" matInput />
+            <input formControlName="nombre" type="text" matInput />
           </mat-form-field>
 
           <mat-form-field class="full-width" style="font-size: 23px;" appearance="outline">
             <mat-label>Descripcion</mat-label>
-            <textarea class="text-area" matInput></textarea>
+            <textarea formControlName="descripcion" class="text-area" matInput></textarea>
           </mat-form-field>
 
-          <div>
-            <div class="subtitulo elemento">Categorias</div>
-            <div class="example-button-container">
-              <button
-                mat-mini-fab
-                color="primary"
-                aria-label="Example icon button with a menu icon"
-              >
-                <mat-icon>add</mat-icon>
-              </button>
-            </div>
+          <div class="subtitulo">Categorias</div>
+          <div *ngIf="!hayCategorias" class="form-text text-danger">
+            Almenos selecciona una categoria
           </div>
-          <div>
-            <div class="subtitulo elemento">Etiquetas</div>
-            <div class="example-button-container">
-              <button
-                mat-mini-fab
-                color="primary"
-                aria-label="Example icon button with a menu icon"
-              >
-                <mat-icon>add</mat-icon>
+          <mat-form-field appearance="outline">
+            <mat-label>Seleccionar</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let categoria of allCategorias" [value]="categoria"
+                (click)="agregarCategoria(categoria)">
+                {{categoria | titlecase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-chip-list>
+            <mat-chip color="accent" selected *ngFor="let categoria of categorias">
+              {{categoria | titlecase}}
+              <button matChipRemove>
+                <mat-icon (click)="cancelarCategoria(categoria)">cancel</mat-icon>
               </button>
-            </div>
+            </mat-chip>
+          </mat-chip-list>
+          <br>
+          <div class="subtitulo">Etiquetas</div>
+
+          <div *ngIf="!hayEtiquetas" class="form-text text-danger">
+            Almenos selecciona una etiqueta
+          </div>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Seleccionar</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let etiqueta of allEtiquetas" [value]="etiqueta" (click)="agregarEtiqueta(etiqueta)">
+                {{etiqueta | titlecase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip color="warn" selected *ngFor="let etiqueta of etiquetas" [selectable]="selectable"
+                [removable]="removable" (removed)="remove(etiqueta)">
+                {{etiqueta | titlecase}}
+                <button matChipRemove *ngIf="removable">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="Agregar nueva etiqueta" [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+          </mat-form-field>
+
+          <div *ngIf="costoMesInvalido" class="form-text text-danger">
+            Ingresa un valor valido
           </div>
           <mat-form-field class="full-width elemento" appearance="outline">
-            <mat-label>Costo de suscripcion</mat-label>
-            <input type="number" matInput />
+            <mat-label>Costo de suscripcion por mes</mat-label>
+            <input formControlName="costoMes" type="number" matInput />
           </mat-form-field>
+          
+          <div *ngIf="costoAnioInvalido" class="form-text text-danger">
+            Ingresa un valor valido
+          </div>
+          <mat-form-field class="full-width elemento" appearance="outline">
+            <mat-label>Costo de suscripcion por año</mat-label>
+            <input formControlName="costoAnio" type="number" matInput />
+          </mat-form-field>
+          
 
+          
           <div class="elemento">
             <label>Fecha de publicacion: </label>
-            <input type="date" class="select-date" />
+            <input formControlName="fechaPublicacion" type="date" class="select-date" />
           </div>
+          <mat-divider></mat-divider>
+          <br>
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Nombre primer volumen</mat-label>
+            <input formControlName="nobrePrimerVolumen" type="text" matInput />
+          </mat-form-field>
 
-          <button mat-raised-button class="full-width elemento" color="primary">
+          <input class="invisible" type="file" (change)="fileUpload($event)" #archivoInput />
+
+          <div *ngIf="!archivoSubido" class="form-text text-danger">
+            Debes subir el primer volumen
+          </div>
+          <button mat-raised-button type="button" class="full-width elemento" color="primary" (click)="archivoInput.click()">
             Subir primer volumen
           </button>
           <div class="boton">
-            <button mat-raised-button class="elemento" color="accent">
+            <button mat-raised-button class="elemento" type="submit" color="accent">
               Publicar
             </button>
           </div>
-        </div>
+        </form>
         <mat-card-content id="contenido"> </mat-card-content>
       </mat-card>
     </div>

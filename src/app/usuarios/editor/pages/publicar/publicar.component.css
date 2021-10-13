@@ -1,8 +1,9 @@
 .contenedor {
     display: flex;
     justify-content: center;
-    align-content: center;
-    height: 125%;
+    height: auto;
+    min-height: 100%;
+    align-items: center;
     background-color: #5e60ce;
 }
 

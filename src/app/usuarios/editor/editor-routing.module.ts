@@ -11,10 +11,6 @@ const rutas: Routes = [
     component: InicioComponent,
     children: [
       {
-        path: 'perfil',
-        component: PerfilComponent
-      },
-      {
         path: 'publicar',
         component: PublicarComponent
       },
@@ -23,6 +19,10 @@ const rutas: Routes = [
         component: MisRevistasComponent
       }
     ]
+  },
+  {
+    path: 'perfil',
+    component: PerfilComponent
   }
 ]
 

@@ -10,8 +10,11 @@
 
         <div id="izquierda">
           <div>
-            <img class="imagen" src="../../../../assets/imagenes/no-image.png" />
+            <input class="invisible" type="file" (change)="onPhotoSelected($event)" #photoInput />
+            <img [src]="foto.contenido || '../../../../assets/imagenes/no-image.png'" class="imagen"
+              (click)="photoInput.click()">
           </div>
+
           <div class="nombre-usuario">
             @{{usuario?.nombre}}
           </div>
@@ -22,7 +25,7 @@
           <div id="descripcion">
             <div class="text-area">
               <div class="subtitulo">Descripcion</div>
-              
+
               <mat-form-field class="full-width" appearance="outline">
                 <textarea formControlName="descripcion" matInput></textarea>
               </mat-form-field>
@@ -75,7 +78,7 @@
             <br>
             <div id="etiquetas">
               <div class="subtitulo">Etiquetas</div>
-              
+
               <div *ngIf="!hayEtiquetas" class="form-text text-danger">
                 Almenos selecciona una etiqueta
               </div>

@@ -2,7 +2,7 @@ import { FotoM } from './FotoM';
 export class PerfilM {
     
     constructor(
-        private _nombreUsuario: string,
+        private _nombreUsuario: string | undefined,
         private _descripcion: string,
         private _hobbies: string,
         private _gustos: string,
@@ -11,10 +11,10 @@ export class PerfilM {
         private _foto: FotoM
     ) { }
 
-    public get nombreUsuario(): string {
+    public get nombreUsuario(): string | undefined {
         return this._nombreUsuario;
     }
-    public set nombreUsuario(value: string) {
+    public set nombreUsuario(value: string | undefined) {
         this._nombreUsuario = value;
     }
     public get foto(): FotoM {

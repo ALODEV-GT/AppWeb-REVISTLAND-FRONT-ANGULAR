@@ -97,14 +97,23 @@ export class RegistroComponent implements OnInit {
     const nuevoUsuario: UsuarioM = new UsuarioM(nombre, contrasena, this.obtenerIdTipoCuenta(tipo));
 
     this.usuarioService.agregarNuevoUsuario(nuevoUsuario).subscribe((resp: UsuarioM) => {
-      console.log(resp);
-      this.router.navigate(['./usuario/perfil'])
+      switch (tipo) {
+        case TipoCuenta.EDITOR:
+          this.router.navigate(['./editor/perfil'])
+          break;
+        case TipoCuenta.NORMAL:
+          this.router.navigate(['./usuario/perfil'])
+          break;
+      }
+
+
+
     });
 
     this.miFormulario.reset();
   }
 
-    private obtenerIdTipoCuenta(tipo: TipoCuenta): number {
+  private obtenerIdTipoCuenta(tipo: TipoCuenta): number {
     switch (tipo) {
       case TipoCuenta.EDITOR:
         return 1;

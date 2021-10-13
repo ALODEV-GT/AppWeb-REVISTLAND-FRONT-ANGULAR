@@ -19,6 +19,9 @@ export class UsuarioService {
   }
 
   getUsuarioAutenticado(): UsuarioM | undefined{
+    if (!this._usuario) {
+      this._usuario = JSON.parse(localStorage.getItem('autenticado')!)|| undefined;
+    }
     return this._usuario;
   }
 
@@ -27,6 +30,8 @@ export class UsuarioService {
       tap(resp => {
         console.log(resp);
         this._usuario = resp
+        localStorage.clear();
+        localStorage.setItem('autenticado', JSON.stringify(this._usuario));
       })
     );
   }
@@ -36,11 +41,13 @@ export class UsuarioService {
       tap(resp => {
         console.log(resp);
         this._usuario = resp
+        localStorage.clear();
+        localStorage.setItem('autenticado', JSON.stringify(this._usuario));
       })
     );
   }
 
   verificarTienePerfil(nombre: string){ 
-    return this.http.get<any[]>(`http://localhost:8080/REVISTLAND/controladorAutenticacion?accion=verificarTienePerfil&nombre=${nombre}`);
+    return this.http.get<any[]>(`${this.baseUrl}?accion=verificarTienePerfil&nombre=${nombre}`);
   }
 }
