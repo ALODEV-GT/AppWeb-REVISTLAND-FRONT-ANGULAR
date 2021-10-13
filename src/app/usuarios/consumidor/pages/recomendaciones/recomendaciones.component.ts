@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecomendacionesService } from '../../services/recomendaciones.service';
 
 @Component({
   selector: 'app-recomendaciones',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecomendacionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recomendacionesService: RecomendacionesService) {
+    this.recomendacionesService.obtenerRecomendaciones('consumidor').subscribe(r => console.log(r));
+   }
 
   ngOnInit(): void {
+    
   }
 
 }
