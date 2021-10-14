@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RecomendacionM } from '../../../../../control/recomendacion/RecomendacionM';
 
 @Component({
   selector: 'app-tarjeta-revista',
   templateUrl: './tarjeta-revista.component.html',
   styleUrls: ['./tarjeta-revista.component.css']
 })
-export class TarjetaRevistaComponent implements OnInit {
+export class TarjetaRevistaComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  @Input() recomendacion! : RecomendacionM;
 
 }

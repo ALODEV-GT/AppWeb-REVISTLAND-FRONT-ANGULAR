@@ -1,52 +1,62 @@
 <div class="fondo">
-    <mat-card class="redondear tamano">
-        <br>
-        <mat-card-title class="centrar titulo">
-            REALIZAR COMPRA
-        </mat-card-title>
-        <br><br>
-        <mat-card-content>
-            <mat-form-field class="full-width tamano-sub" appearance="outline">
-                <mat-label>Numero de tarjeta</mat-label>
-                <input matInput>
-            </mat-form-field>
-            <mat-form-field class="full-width tamano-sub" appearance="outline">
-                <mat-label>Codigo de seguridad</mat-label>
-                <input matInput>
-            </mat-form-field>
-    
-            <mat-radio-group>
-                <div fxLayout="row" fxLayoutAlign="space-around center" >
-                    <div class="tamano-sub">
-                        <mat-radio-button value="1">Mensual</mat-radio-button>
-                    </div>
-                    <div class="tamano-sub">
-                        <mat-radio-button value="2">Anual</mat-radio-button>
-                    </div>
-                </div>
-            </mat-radio-group>
-    
-            <div>
+    <form (ngSubmit)='realizarCompra()' autocomplete="off" [formGroup]="miFormulario">
+        <mat-card class="redondear tamano">
+            <br>
+            <mat-card-title class="centrar titulo">
+                REALIZAR COMPRA
+            </mat-card-title>
+            <br><br>
+            <mat-card-content>
                 <div class="subtitulo tamano-sub">
-                    DESCRIPCION
-                </div>
-                <div fxLayout="row" class="detalle">
-                    <div>
-                        Revista nombre revista
+                    TIPO DE PAGO
+                </div><br>
+                <mat-radio-group formControlName="tipoPago">
+                    <div fxLayout="row" fxLayoutAlign="space-around center">
+                        <div class="tamano-sub">
+                            <mat-radio-button value="1">Mensual</mat-radio-button>
+                        </div>
+                        <div class="tamano-sub">
+                            <mat-radio-button value="2">Anual</mat-radio-button>
+                        </div>
                     </div>
-                    <span class="spacer"> </span>
-                    <div>
-                        100
+                </mat-radio-group>
+                <br>
+                <mat-divider></mat-divider>
+                <div>
+                    <div class="subtitulo tamano-sub">
+                        DESCRIPCION
+                    </div><br>
+                    <div fxLayout="row" class="detalle">
+                        <div *ngIf="detalleRevista">
+                            {{detalleRevista.nombreRevista}}
+                        </div>
+                        <span class="spacer"> </span>
+                        <div  *ngIf="this.miFormulario.get('tipoPago')?.value==1; else elseTemplate">
+                            <span *ngIf="detalleRevista">{{detalleRevista.precioMensual}}</span>
+                        </div>
+                        <ng-template #elseTemplate>
+                            <span *ngIf="detalleRevista">{{detalleRevista.precioAnual}}</span>
+                        </ng-template>   
                     </div>
                 </div>
-            </div>
-        </mat-card-content>
-        <br>
-        <mat-card-actions>
-            <button mat-raised-button class="full-width tamano-sub boton" color="accent">Realizar pago</button>
-        </mat-card-actions>
-        <mat-card-footer>
+                <br>
+                <mat-divider></mat-divider>
+                <div>
+                    <div class="subtitulo tamano-sub">
+                        FECHA DE PAGO
+                    </div><br>
+                    <div fxLayout="row" class="detalle">
+                        <input formControlName="fechaCompra" type="date" class="select-date" />    
+                    </div>
+                </div>
+            </mat-card-content>
+            <br>
+            <mat-card-actions>
+                <button mat-raised-button class="full-width tamano-sub boton" color="accent">Realizar pago</button>
+            </mat-card-actions>
+            <mat-card-footer>
 
-        </mat-card-footer>
-    </mat-card>
-    </div>
+            </mat-card-footer>
+        </mat-card>
+    </form>
+</div>

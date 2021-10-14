@@ -6,17 +6,18 @@
     </div>
     <div class="e-contenido d-flex flex-column align-items-start">
 
-      <div class="titulo">Nombre revista</div>
+      <div class="titulo">{{recomendacion.nombreRevista}}</div>
 
       <div class="mb-auto">
-        <div class="desc">Autor: <span> Nombre autor</span></div>
-        <div class="desc">Precio: <span>100</span></div>
+        <div class="desc">Autor: <span> {{recomendacion.autor}}</span></div>
+        <div class="desc">Precio mensual: <span>{{recomendacion.precioMensual}}</span></div>
+        <div class="desc">Precio anual: <span>{{recomendacion.precioAnual}}</span></div>
       </div>
 
       <div>
         <div fxLayout="row gap">
           <div class="actions">
-            <span>50</span>
+            <span>{{recomendacion.numLike}}</span>
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                 class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -27,7 +28,7 @@
           </div>
 
           <div class="actions">
-            <span> 65 </span>
+            <span> {{recomendacion.numLike}} </span>
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chat-text"
                 viewBox="0 0 16 16">
@@ -40,7 +41,9 @@
           </div>
 
           <div class="boton">
-            <button  mat-raised-button color="warn">Ver mas</button>
+            <button  mat-raised-button color="warn" [routerLink]="['/usuario/info/', recomendacion.idRevista]">
+              Leer mas...
+            </button>
           </div>
         </div>
       </div>

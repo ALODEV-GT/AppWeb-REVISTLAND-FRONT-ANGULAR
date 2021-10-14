@@ -1,2 +1,10 @@
-<h1>ESTA PAGINA ES EL INICIO, Y SE MOSTRARA RECOMENDACIONES AL USUARIO</h1>
-<app-tarjeta-revista></app-tarjeta-revista>
+<h1>Recomendaciones para ti</h1>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout='row wrap' fxLayout.xs='column' fxLayoutAlign="center" fxLayoutGap="50px">
+    <div fxFlex="45" fxFlex.lg='45' fxFlex.sm="30" *ngFor="let recomendacion of recomendaciones">
+        <br>
+        <app-tarjeta-revista [recomendacion]="recomendacion"></app-tarjeta-revista>
+    </div>
+</div>

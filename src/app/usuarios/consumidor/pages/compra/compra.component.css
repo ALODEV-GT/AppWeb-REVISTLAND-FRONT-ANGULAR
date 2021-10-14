@@ -49,3 +49,12 @@
 .boton{
     height: 40px;
 }
+
+.select-date{
+    border:none;
+    border-bottom: 1px solid #777777;
+    width: 57%;
+    font-size: 23px;
+    background: #424242;
+    color: blanchedalmond;
+}

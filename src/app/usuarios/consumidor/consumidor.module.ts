@@ -10,6 +10,7 @@ import { TarjetaRevistaComponent } from './components/tarjeta-revista/tarjeta-re
 import { RecomendacionesComponent } from './pages/recomendaciones/recomendaciones.component';
 import { DescRevistaComponent } from './pages/desc-revista/desc-revista.component';
 import { CompraComponent } from './pages/compra/compra.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CompraComponent } from './pages/compra/compra.component';
     ConsumidorRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    UsuariosModule
+    UsuariosModule,
+    ReactiveFormsModule
   ],
   exports: [
     PerfilComponent

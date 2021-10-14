@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RecomendacionM } from '../../../../control/recomendacion/RecomendacionM';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class RecomendacionesService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerRecomendaciones(nombreUsuario: string){
-    return this.http.get<any>(`${this.baseUrl}?accion=obtenerRecomendaciones&nombre=${nombreUsuario}`);
+  obtenerRecomendaciones(nombreUsuario: string | undefined){
+    return this.http.get<RecomendacionM[]>(`${this.baseUrl}?accion=obtenerRecomendaciones&nombre=${nombreUsuario}`);
   }
 }
