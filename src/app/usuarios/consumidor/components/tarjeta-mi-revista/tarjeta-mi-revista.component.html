@@ -1,0 +1,51 @@
+<mat-card>
+    <div fxLayout="row gap">
+      <div class="e-imagen">
+        <img class="imagen"
+          src="https://www.designwizard.com/wp-content/uploads/2018/05/eab8b7d0-43a1-11e8-bb73-d5e318d55a9c.jpg" alt="" />
+      </div>
+      <div class="e-contenido d-flex flex-column align-items-start">
+  
+        <div class="titulo">{{miRevista.nombreRevista}}</div>
+  
+        <div>
+          <div class="desc">Autor: <span> {{miRevista.autor}}</span></div>
+          <div class="desc">Fecha de suscripcion: <span>{{miRevista.fechaSuscripcion}}</span></div>
+          <div class="desc">Fecha de finalizacion: <span>{{miRevista.fechaFinalizacion}}</span></div>
+        </div>
+
+        <div fxLayout="column">
+
+            <div>
+                <div class="desc">Categorias</div>
+                <mat-chip-list>
+                    <mat-chip color="accent" selected *ngFor="let categoria of miRevista.categorias">
+                        {{categoria | titlecase}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+            <div>
+                <div class="desc">Etiquetas</div>
+                <mat-chip-list>
+                    <mat-chip color="warn" selected *ngFor="let etiqueta of miRevista.etiquetas">
+                        {{etiqueta | titlecase}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+
+        <div class="mb-auto"></div>
+        <br>
+        <div>
+          <div fxLayout="row gap">
+            <div class="boton">
+              <button mat-raised-button color="warn" [routerLink]="['/usuario/volumenes/', miRevista.idRevista]">
+                VER VOLUMENES
+              </button>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </mat-card>

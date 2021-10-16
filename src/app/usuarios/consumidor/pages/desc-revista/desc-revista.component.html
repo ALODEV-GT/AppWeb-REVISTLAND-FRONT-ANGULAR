@@ -1,6 +1,6 @@
 <div class="fondo">
 
-    <mat-card class="redondear tamano">
+    <mat-card *ngIf="detalleRevista" class="redondear tamano">
         <mat-card-header>
             <div fxLayout="row gap">
                 <div class="e-imagen">
@@ -10,7 +10,7 @@
                 </div>
                 <div class="e-contenido d-flex flex-column align-items-start contenedor">
 
-                    <div class="titulo">{{detalleRevista.nombreRevista}}</div>
+                    <div  class="titulo">{{detalleRevista.nombreRevista}}</div>
                     <br>
                     <div fxLayout="column">
 
@@ -19,7 +19,7 @@
                             <br>
                             <mat-chip-list>
                                 <mat-chip color="accent" selected *ngFor="let categoria of detalleRevista.categorias">
-                                    {{categoria}}
+                                    {{categoria | titlecase}}
                                 </mat-chip>
                             </mat-chip-list>
                         </div>
@@ -29,7 +29,7 @@
                             <br>
                             <mat-chip-list>
                                 <mat-chip color="warn" selected *ngFor="let etiqueta of detalleRevista.etiquetas">
-                                    {{etiqueta}}
+                                    {{etiqueta | titlecase}}
                                 </mat-chip>
                             </mat-chip-list>
                         </div>

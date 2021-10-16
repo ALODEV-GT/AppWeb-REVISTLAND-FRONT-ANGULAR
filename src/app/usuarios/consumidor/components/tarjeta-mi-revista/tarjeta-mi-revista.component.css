@@ -1,0 +1,43 @@
+.e-imagen {
+    width: 30%;
+    height: min-content;
+    margin: 2px;
+}
+
+
+.e-contenido {
+    width: 68%;
+    margin: 2px;
+}
+
+.imagen {
+    width: 100%;
+}
+
+.titulo {
+    font-size: 30px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.contenido {
+    font-size: 20px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.actions {
+    font-size: 22px;
+    margin: 8px 10px;
+}
+
+.boton {
+    padding-bottom: 10px;
+}
+
+.desc {
+    margin: 30px 5px;
+    font-size: 25px;
+}

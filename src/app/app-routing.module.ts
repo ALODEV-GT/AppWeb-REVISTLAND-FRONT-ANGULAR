@@ -23,6 +23,12 @@ const rutas: Routes = [
     )
   },
   {
+    path: "administrador",
+    loadChildren: () => import('./usuarios/administrador/administrador.module').then(
+      m => m.AdministradorModule
+    )
+  },
+  {
     path: '404', //Pagina de error
     component: ErrorPageComponent //Componente relacionado con el path.
   },

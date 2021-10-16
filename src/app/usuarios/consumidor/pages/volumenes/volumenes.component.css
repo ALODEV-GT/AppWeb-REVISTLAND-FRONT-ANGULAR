@@ -1,0 +1,112 @@
+.full-width {
+    width: 100%;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.redondear {
+    border-radius: 20px;
+}
+
+.tamano {
+    width: 50%;
+    height: auto;
+}
+
+.fondo {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    min-height: 100%;
+    align-items: center;
+    background-color: #7B1FA2;
+}
+
+.centrar {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.e-imagen {
+    width: 38%;
+    height: min-content;
+    margin: 2px;
+}
+
+.e-contenido {
+    width: 58%;
+    margin: 2px;
+}
+
+.imagen {
+    width: 100%;
+}
+
+.titulo {
+    font-size: 30px;
+    margin: 5px 0px;
+    font-weight: bold;
+}
+
+.contenido {
+    font-size: 20px;
+}
+
+
+.actions {
+    font-size: 22px;
+    margin: 8px 10px;
+}
+
+.boton {
+    padding-bottom: 7px;
+    font-size: 30px;
+}
+
+.desc {
+    margin: 30px 5px;
+    font-size: 25px;
+}
+
+.subtitulo{
+    font-size: 25px;
+}
+
+.contenedor{
+    margin-left: 13px;
+}
+
+.tabla{
+    color:white;
+    font-size: 20px;
+}
+
+.max-width{
+    width: 100%;
+}
+
+.redondear-g{
+    border-radius: 10px;
+}
+
+.comentarios{
+    background-color: #585858;
+    border-radius: 10px;
+    margin: 10px 15px;
+    max-height: min-content;
+}
+
+.nombre-usuario{
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 7px;
+}
+
+.c-coment{
+    font-size: 15px;
+    margin-left: 7px;
+}

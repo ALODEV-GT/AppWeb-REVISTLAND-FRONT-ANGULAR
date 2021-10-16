@@ -17,7 +17,7 @@
 
         <span class="spacer"></span>
 
-        <button class="boton" mat-raised-button color="primary">Mis revistas</button>
+        <button class="boton" routerLink="./mis-revistas" mat-raised-button color="primary">Mis revistas</button>
 
         <span class="spacer"></span>
 
@@ -28,11 +28,11 @@
                 </svg>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item routerLink='/usuario/perfil'>
                 <mat-icon>person</mat-icon>
                 <span>Perfil</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item routerLink='/autenticacion/login'>
                 <mat-icon>logout</mat-icon>
                 <span>Salir</span>
             </button>

@@ -44,13 +44,15 @@ export class LoginComponent {
       } else {
 
         this.usuarioService.verificarTienePerfil(resp.nombre).subscribe((m) => {
+          console.log(m);
+          
           if (m.length == undefined) {
             switch (resp.idTipoCuenta) {
               case 1:
                 this.router.navigate(['./editor/publicar'])
                 break;
               case 2:
-                this.router.navigate(['./autenticacion/registro'])
+                this.router.navigate(['./administrador/costo'])
                 break;
               case 3:
                 this.router.navigate(['./usuario/inicio'])
@@ -65,7 +67,7 @@ export class LoginComponent {
                 this.router.navigate(['./editor/perfil'])
                 break;
               case 2:
-                this.router.navigate(['./autenticacion/registro']) //Si el admin no creo su perfil
+                this.router.navigate(['./administrador/costo'])
                 break;
               case 3:
                 this.router.navigate(['./usuario/perfil'])

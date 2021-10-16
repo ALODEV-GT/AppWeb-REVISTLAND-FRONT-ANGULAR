@@ -5,6 +5,8 @@ import { PerfilComponent } from '../components/perfil/perfil.component';
 import { RecomendacionesComponent } from './pages/recomendaciones/recomendaciones.component';
 import { DescRevistaComponent } from './pages/desc-revista/desc-revista.component';
 import { CompraComponent } from './pages/compra/compra.component';
+import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.component';
+import { VolumenesComponent } from './pages/volumenes/volumenes.component';
 
 const rutas: Routes = [
   {
@@ -22,6 +24,14 @@ const rutas: Routes = [
       {
         path: 'compra/:revista',
         component: CompraComponent
+      },
+      {
+        path: 'mis-revistas',
+        component: MisRevistasComponent
+      },
+      {
+        path: 'volumenes/:revista',
+        component: VolumenesComponent
       }
     ]
   },

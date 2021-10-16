@@ -1,0 +1,34 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    min-height: 100%;
+    align-items: center;
+    background-color: #5e60ce;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.redondear{
+    border-radius: 20px;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+}
+
+.titulo{
+    font-size: 35px;
+}
+
+.subtitulo{
+    font-size: 23px;
+}
+
+.elemento{
+    margin: 0px 0px;
+    font-size: 23px;
+}

@@ -1,4 +1,10 @@
 export class RecomendacionM {
+    public get fechaPublicacion(): string {
+        return this._fechaPublicacion;
+    }
+    public set fechaPublicacion(value: string) {
+        this._fechaPublicacion = value;
+    }
     public get idRevista(): number {
         return this._idRevista;
     }
@@ -49,6 +55,7 @@ export class RecomendacionM {
         private _precioMensual: number,
         private _precioAnual: number,
         private _numComentarios: number,
-        private _numLike: number
+        private _numLike: number,
+        private _fechaPublicacion: string
     ) { }
 }

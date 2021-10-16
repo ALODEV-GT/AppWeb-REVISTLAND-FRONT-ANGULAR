@@ -11,6 +11,9 @@ import { RecomendacionesComponent } from './pages/recomendaciones/recomendacione
 import { DescRevistaComponent } from './pages/desc-revista/desc-revista.component';
 import { CompraComponent } from './pages/compra/compra.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.component';
+import { TarjetaMiRevistaComponent } from './components/tarjeta-mi-revista/tarjeta-mi-revista.component';
+import { VolumenesComponent } from './pages/volumenes/volumenes.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecomendacionesComponent,
     DescRevistaComponent,
     CompraComponent,
+    MisRevistasComponent,
+    TarjetaMiRevistaComponent,
+    VolumenesComponent,
   ],
   imports: [
     CommonModule,

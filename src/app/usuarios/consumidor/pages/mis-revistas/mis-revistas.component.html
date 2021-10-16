@@ -1,0 +1,10 @@
+<h1>Mis revistas</h1>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout='row wrap' fxLayout.xs='column' fxLayoutAlign="center" fxLayoutGap="50px">
+    <div fxFlex="45" fxFlex.lg='45' fxFlex.sm="30" *ngFor="let revista of misRevistas">
+        <br>
+        <app-tarjeta-mi-revista [miRevista]="revista" > </app-tarjeta-mi-revista>        
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="contenedor">
+    <mat-card class="redondear">
+        <div class="subtitulo">Porcentaje por suscripcion</div>
+        <br>
+        <form (ngSubmit)='cambiarPorcentaje()' autocomplete="off" [formGroup]="miFormulario">
+            <mat-form-field class="elemento" appearance="outline">
+                <input formControlName="porcentaje" type="number" matInput />
+            </mat-form-field><span class="subtitulo"> %</span>
+
+            <div class="boton">
+                <button mat-raised-button class="elemento" type="submit" color="accent">
+                    Cambiar
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>
