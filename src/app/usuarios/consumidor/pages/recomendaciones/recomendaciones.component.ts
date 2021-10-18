@@ -19,7 +19,6 @@ export class RecomendacionesComponent implements OnInit {
     this.recomendacionesService.obtenerRecomendaciones(this.usuario?.nombre).subscribe((res: RecomendacionM[]) => {
       this.recomendaciones = res;
       console.log(res);
-      
     }
     );
   }

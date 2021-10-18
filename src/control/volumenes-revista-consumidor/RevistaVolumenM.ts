@@ -2,6 +2,18 @@ import { ComentarioM } from '../interacciones/ComentarioM';
 import { VolumenM } from '../publicarRevista/VolumenM';
 
 export class RevistaVolumenM {
+    public get idRevista(): number {
+        return this._idRevista;
+    }
+    public set idRevista(value: number) {
+        this._idRevista = value;
+    }
+    public get idPublicacion(): number {
+        return this._idPublicacion;
+    }
+    public set idPublicacion(value: number) {
+        this._idPublicacion = value;
+    }
     public get comentarios(): ComentarioM[] {
         return this._comentarios;
     }
@@ -33,11 +45,13 @@ export class RevistaVolumenM {
         this._nombreRevista = value;
     }
     constructor(
+        private _idPublicacion: number,
         private _nombreRevista: string,
         private _volumenes: VolumenM[],
         private _numComentarios: number,
         private _numMeGustas: number,
-        private _comentarios: ComentarioM[]
+        private _comentarios: ComentarioM[],
+        private _idRevista: number
     ) { }
 
 }

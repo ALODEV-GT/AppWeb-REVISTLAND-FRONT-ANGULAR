@@ -9,6 +9,7 @@ import { PublicarComponent } from './pages/publicar/publicar.component';
 import { RevistaPublicadaComponent } from './components/revista-publicada/revista-publicada.component';
 import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AgregarVolumenComponent } from './pages/agregar-volumen/agregar-volumen.component';
 
 
 
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     InicioComponent,
     PublicarComponent,
     RevistaPublicadaComponent,
-    MisRevistasComponent
+    MisRevistasComponent,
+    AgregarVolumenComponent
   ],
   imports: [
     CommonModule,

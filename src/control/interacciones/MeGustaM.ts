@@ -1,10 +1,4 @@
-export class ComentarioM {
-    public get nombreUsuario(): string | undefined {
-        return this._nombreUsuario;
-    }
-    public set nombreUsuario(value: string | undefined) {
-        this._nombreUsuario = value;
-    }
+export class MeGustaM{
     public get idPulicacion(): number {
         return this._idPulicacion;
     }
@@ -17,16 +11,14 @@ export class ComentarioM {
     public set fecha(value: string) {
         this._fecha = value;
     }
-    public get comentario(): string {
-        return this._comentario;
+    public get nombreUsuario(): string | undefined {
+        return this._nombreUsuario;
     }
-    public set comentario(value: string) {
-        this._comentario = value;
+    public set nombreUsuario(value: string | undefined) {
+        this._nombreUsuario = value;
     }
-    
     constructor(
         private _nombreUsuario: string | undefined,
-        private _comentario: string,
         private _fecha: string,
         private _idPulicacion: number
     ) { }

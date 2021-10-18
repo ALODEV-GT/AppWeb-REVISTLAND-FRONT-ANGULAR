@@ -19,4 +19,8 @@ export class DetalleRevistaService {
   obtenerVolumenesRevista(idRevista: number) {
     return this.http.get<RevistaVolumenM>(`${this.baseUrl}?accion=obtenerVolumenesRevista&idRevista=${idRevista}`);
   }
+
+  obtenerRevistas(editor: string | undefined){
+    return this.http.get<RevistaVolumenM[]>(`${this.baseUrl}?accion=obtenerRevistas&editor=${editor}`);
+  }
 }

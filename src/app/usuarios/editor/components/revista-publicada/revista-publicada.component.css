@@ -4,6 +4,7 @@
 }
 
 .tamano{
+    width: 50%;
     min-width: 760px;
 }
 
@@ -50,4 +51,22 @@
 .c-coment{
     font-size: 15px;
     margin-left: 7px;
+}
+
+.select-date{
+    border:none;
+    border-bottom: 1px solid #777777;
+    width: auto;
+    font-size: 23px;
+    background: #424242;
+    color: blanchedalmond;
+}
+
+.elemento{
+    margin: 15px 0px;
+    font-size: 23px;
+}
+
+.full-width {
+    width: 100%;
 }

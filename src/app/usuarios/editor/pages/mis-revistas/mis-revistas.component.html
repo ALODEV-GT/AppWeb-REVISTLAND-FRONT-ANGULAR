@@ -1,2 +1,8 @@
-<p>SE HARA UN FOR DE TODAS LAS REVISTAS PUBLICADAS</p>
-<app-revista-publicada></app-revista-publicada>
+<div class="contenedor">
+    <div fxLayout='column' fxLayout.xs='column' fxLayoutAlign="center">
+        <div fxFlex="45" fxFlex.lg='45' fxFlex.sm="30" *ngFor="let revista of revistas">
+            <br>
+            <app-revista-publicada [revista]="revista" [idPublicacion]="revista.idPublicacion"></app-revista-publicada>
+        </div>
+    </div>
+</div>
