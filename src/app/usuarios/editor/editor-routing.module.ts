@@ -4,6 +4,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { PerfilComponent } from '../components/perfil/perfil.component';
 import { PublicarComponent } from './pages/publicar/publicar.component';
 import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.component';
+import { AgregarVolumenComponent } from './pages/agregar-volumen/agregar-volumen.component';
 
 const rutas: Routes = [
   {
@@ -17,6 +18,10 @@ const rutas: Routes = [
       {
         path: 'mis-revistas',
         component: MisRevistasComponent
+      },
+      {
+        path: 'agregar-volumen/:revista',
+        component: AgregarVolumenComponent
       }
     ]
   },

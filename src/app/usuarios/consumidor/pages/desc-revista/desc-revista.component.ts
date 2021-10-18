@@ -13,13 +13,15 @@ export class DescRevistaComponent implements OnInit {
 
   detalleRevista!: DescripcionRevistaM;
 
-  constructor(private activatedRoute: ActivatedRoute, private detalleRevistaService: DetalleRevistaService) { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private detalleRevistaService: DetalleRevistaService
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(
-      switchMap(({revista}) => this.detalleRevistaService.obtenerDetalleRevista(revista))
+      switchMap(({ revista }) => this.detalleRevistaService.obtenerDetalleRevista(revista))
 
-    ).subscribe( (detalleRevista: DescripcionRevistaM) => this.detalleRevista = detalleRevista);
+    ).subscribe((detalleRevista: DescripcionRevistaM) => this.detalleRevista = detalleRevista);
   }
 
 }

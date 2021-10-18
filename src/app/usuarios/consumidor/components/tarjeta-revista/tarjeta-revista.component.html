@@ -29,7 +29,7 @@
           </div>
 
           <div class="actions">
-            <span> {{recomendacion.numLike}} </span>
+            <span> {{recomendacion.numComentarios}} </span>
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chat-text"
                 viewBox="0 0 16 16">
@@ -42,7 +42,7 @@
           </div>
 
           <div class="boton">
-            <button  mat-raised-button color="warn" [routerLink]="['/usuario/info/', recomendacion.idRevista]">
+            <button mat-raised-button color="warn" [routerLink]="['/usuario/info/', recomendacion.idRevista]">
               Leer mas...
             </button>
           </div>

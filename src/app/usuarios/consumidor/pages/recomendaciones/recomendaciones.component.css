@@ -1,0 +1,16 @@
+.contenedor {
+    height: auto;
+    min-height: 100%;
+    background-color: #5e60ce;
+}
+
+.titulo{
+    font-size: 40px;
+    color: bisque;
+}
+
+.titulo-contenedor{
+    padding-left:50px;
+    padding-top:60px ;
+    padding-bottom: 10px;
+}

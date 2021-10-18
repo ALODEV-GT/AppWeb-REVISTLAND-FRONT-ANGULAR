@@ -1,1 +1,42 @@
-<p>agregar-volumen works!</p>
+<div class="contenedor">
+            <mat-card class="tamano redondear">
+                <div>
+                    <mat-card-header id="header" class="centrar">
+                        <br />
+                        Nuevo volumen
+                    </mat-card-header>
+                </div>
+                <br>
+                <form (ngSubmit)='publicarVolumen()' autocomplete="off" [formGroup]="miFormulario">
+                    <div fxLayout="column">
+                        <div>
+                            <div class="elemento" fxLayout="row gap">
+                                <label>Fecha de publicacion: </label>
+                                <input formControlName="fechaPublicacion" type="date" class="select-date" />
+                            </div>
+                        </div>
+                        <br>
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>Nombre del volumen</mat-label>
+                            <input formControlName="nombreVolumen" type="text" matInput />
+                        </mat-form-field>
+
+                        <input class="invisible" type="file" (change)="fileUpload($event)" #archivoInput />
+
+                        <div *ngIf="!archivoSubido" class="form-text text-danger">
+                            Debes subir un archivo
+                        </div>
+                        <button mat-raised-button type="button" class="full-width elemento" color="primary"
+                            (click)="archivoInput.click()">
+                            Subir volumen
+                        </button>
+                        <div class="boton">
+                            <button mat-raised-button class="elemento" type="submit" color="accent">
+                                Publicar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <mat-card-content id="contenido"> </mat-card-content>
+            </mat-card>
+</div>

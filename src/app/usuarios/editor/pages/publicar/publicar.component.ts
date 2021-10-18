@@ -193,7 +193,6 @@ export class PublicarComponent implements OnInit {
     }
   }
 
-
   //Agregar archivo
 
   archivo!: File | null;

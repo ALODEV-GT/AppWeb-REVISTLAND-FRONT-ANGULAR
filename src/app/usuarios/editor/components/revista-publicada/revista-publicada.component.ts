@@ -8,6 +8,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ComentarioM } from 'src/control/interacciones/ComentarioM';
 import { InteraccionesService } from 'src/app/usuarios/consumidor/services/interacciones.service';
 import { DetalleRevistaService } from 'src/app/usuarios/consumidor/services/detalle-revista.service';
+import { DescargarArchivoService } from '../../../consumidor/services/descargar-archivo.service';
+import { PublicarRevistaService } from '../../services/publicar-revista.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-revista-publicada',
@@ -22,6 +25,8 @@ export class RevistaPublicadaComponent {
   permitirSuscripciones!: PermitirM;
   permitirInteracciones!: PermitirM;
   usuario!: UsuarioM | undefined;
+  baseUrl: string = this.descargarArchivoService.getBaseUrlArchivos();
+
 
   verComentarios: boolean = false;
 
@@ -31,6 +36,9 @@ export class RevistaPublicadaComponent {
     private fb: FormBuilder,
     private interaccionesService: InteraccionesService,
     private detalleRevistaService: DetalleRevistaService,
+    private descargarArchivoService: DescargarArchivoService,
+    private publicarRevistaService: PublicarRevistaService,
+    private snackBar: MatSnackBar
   ) {
     this.usuario = this.usuarioService.getUsuarioAutenticado();
   }
@@ -70,13 +78,11 @@ export class RevistaPublicadaComponent {
     });
   }
 
-  obtenerDatosRevista(){
+  obtenerDatosRevista() {
     this.detalleRevistaService.obtenerVolumenesRevista(this.revista.idRevista)
-    .subscribe((res: RevistaVolumenM) => {
-      console.log("Se actualizo revist: ", this.revista.idRevista);
-      this.revista = res;
-      console.log("Se actualizo revist: ", this.revista.idRevista);
-    });
+      .subscribe((res: RevistaVolumenM) => {
+        this.revista = res;
+      });
   }
 
   slideSuscripcion() {
@@ -93,6 +99,20 @@ export class RevistaPublicadaComponent {
 
   mostrarComentarios() {
     this.verComentarios = !this.verComentarios;
+  }
+
+  eliminarVolumen(idArchivo: number) {
+    this.publicarRevistaService.eliminarVolumen(idArchivo).subscribe((r) => {
+      this.mostrarSnakBar("Se ha eliminado el volumen");
+      this.obtenerDatosRevista();
+    });
+
+  }
+
+  mostrarSnakBar(mensaje: string) {
+    this.snackBar.open(mensaje, "ok", {
+      duration: 3000,
+    });
   }
 
 }

@@ -1,10 +1,21 @@
-<h1>Mis revistas</h1>
-<mat-divider></mat-divider>
-<br>
+<div class="contenedor">
+    <div>
+        <div *ngIf="misRevistas.length > 0; else noHayRevistas" class="titulo-contenedor">
+            <div class="titulo">Mis revistas</div>
+            <br>
+        </div>
 
-<div fxLayout='row wrap' fxLayout.xs='column' fxLayoutAlign="center" fxLayoutGap="50px">
-    <div fxFlex="45" fxFlex.lg='45' fxFlex.sm="30" *ngFor="let revista of misRevistas">
-        <br>
-        <app-tarjeta-mi-revista [miRevista]="revista" > </app-tarjeta-mi-revista>        
+        <ng-template #noHayRevistas >
+            <div class="titulo-contenedor">
+                <div class="titulo">Aun no tienes revistas</div>
+            </div>
+        </ng-template>
+
+        <div fxLayout='row wrap' fxLayout.xs='column' fxLayoutAlign="center" fxLayoutGap="50px">
+            <div fxFlex="45" fxFlex.lg='45' fxFlex.sm="30" *ngFor="let revista of misRevistas">
+                <br>
+                <app-tarjeta-mi-revista [miRevista]="revista"> </app-tarjeta-mi-revista>
+            </div>
+        </div>
     </div>
 </div>

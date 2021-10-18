@@ -3,7 +3,7 @@
         <mat-card-header class="centrar titulo"> {{revista.nombreRevista}} </mat-card-header>
         <br /><br />
         <mat-card-content>
-            <table class="table table-bordered tabla">
+            <table class="table table-bordered tabla" *ngIf="revista.volumenes.length > 0; else noHayVolumenes">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -29,6 +29,14 @@
                     </tr>
                 </tbody>
             </table>
+
+            <ng-template #noHayVolumenes>
+                <span class="form-text text-danger error">
+                    El editor ha eliminado todos los volumenes
+                </span>
+            </ng-template>
+            
+
         </mat-card-content>
         <mat-card-actions>
             <div fxLayout="row gap">

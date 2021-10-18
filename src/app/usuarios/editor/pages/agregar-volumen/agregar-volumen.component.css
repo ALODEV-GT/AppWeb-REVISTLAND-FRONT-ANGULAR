@@ -1,0 +1,46 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    min-height: 100%;
+    align-items: center;
+    background-color: #5e60ce;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.elemento{
+    margin: 15px 0px;
+    font-size: 23px;
+}
+
+.select-date{
+    border:none;
+    border-bottom: 1px solid #777777;
+    width: 57%;
+    font-size: 23px;
+    background: #424242;
+    color: blanchedalmond;
+}
+
+.redondear{
+    border-radius: 20px;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+}
+
+.tamano {
+    width: 35%;
+    height: min-content;
+}

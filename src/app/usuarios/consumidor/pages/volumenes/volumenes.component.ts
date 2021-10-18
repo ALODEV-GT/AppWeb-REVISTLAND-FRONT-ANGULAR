@@ -26,7 +26,7 @@ export class VolumenesComponent implements OnInit {
   idRevista!: number;
   verComentarios: boolean = false;
 
-  baseUrl: string = "http://localhost:8080/REVISTLAND/controladorDescargarArchivo?accion=descargarArchivo&idArchivo=";
+  baseUrl: string = this.descargarArchivoService.getBaseUrlArchivos();
   permitirInteracciones: boolean = false;
 
   constructor(
@@ -47,7 +47,7 @@ export class VolumenesComponent implements OnInit {
       switchMap(({ revista }) => this.detalleRevistaService.obtenerVolumenesRevista(revista))
     ).subscribe((res: RevistaVolumenM) => {
       this.revista = res;
-      this.permisosRevistaService.esInteractiva(this.revista.idPublicacion).subscribe((res: PermitirM)=>{
+      this.permisosRevistaService.esInteractiva(this.revista.idPublicacion).subscribe((res: PermitirM) => {
         this.permitirInteracciones = res.permitir;
       });
     });
@@ -69,7 +69,7 @@ export class VolumenesComponent implements OnInit {
     return partes[0];
   }
 
-  obtenerDatosRevista(){
+  obtenerDatosRevista() {
     this.activatedRoute.params.pipe(
       switchMap(({ revista }) => this.detalleRevistaService.obtenerVolumenesRevista(revista))
     ).subscribe((res: RevistaVolumenM) => {
@@ -78,13 +78,13 @@ export class VolumenesComponent implements OnInit {
   }
 
   accionarLike() {
-    if(!this.permitirInteracciones){
+    if (!this.permitirInteracciones) {
       this.mostrarSnakBar('El editor ha desactivado las interacciones para esta revista');
       return;
     }
 
     const fechaComentario: string = this.miFormulario.get('fechaPublicacion')?.value;
-    const meGusta: MeGustaM = new MeGustaM(this.usuario?.nombre,fechaComentario,this.revista.idPublicacion);
+    const meGusta: MeGustaM = new MeGustaM(this.usuario?.nombre, fechaComentario, this.revista.idPublicacion);
     this.interaccionesService.meGusta(meGusta).subscribe(r => this.obtenerDatosRevista());
   }
 
@@ -95,7 +95,7 @@ export class VolumenesComponent implements OnInit {
   }
 
   mostarComentarios() {
-    this.verComentarios=!this.verComentarios;
+    this.verComentarios = !this.verComentarios;
   }
 
   comentar() {

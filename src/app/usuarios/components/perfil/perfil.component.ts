@@ -26,10 +26,10 @@ export class PerfilComponent implements OnInit {
     private router: Router,
     private perfilService: PerfilService
   ) {
-    
+
     this.perfilService.obtenerCategorias().subscribe((resp: string[]) => this.allCategorias = resp);
     this.perfilService.obtenerEtiquetas().subscribe((resp: string[]) => this.allEtiquetas = resp);
- 
+
   }
 
   ngOnInit(): void {
@@ -38,22 +38,22 @@ export class PerfilComponent implements OnInit {
       if (resp) {
         this.perfil = resp;
         this.foto.contenido = resp.foto.contenido;
-        this.formularioPerfil.controls["descripcion"].setValue(resp.descripcion); 
-        this.formularioPerfil.controls["hobbies"].setValue(resp.hobbies); 
-        this.formularioPerfil.controls["gustos"].setValue(resp.gustos);      
-        
+        this.formularioPerfil.controls["descripcion"].setValue(resp.descripcion);
+        this.formularioPerfil.controls["hobbies"].setValue(resp.hobbies);
+        this.formularioPerfil.controls["gustos"].setValue(resp.gustos);
+
         this.perfilService.obtenerEtiquetasUsuario(this.usuario?.nombre).subscribe((res: string[]) => this.etiquetas = res);
         this.perfilService.obtenerCategoriasUsuario(this.usuario?.nombre).subscribe((res: string[]) => this.categorias = res);
       }
-    } );
+    });
 
-    
+
   }
 
   hayEtiquetas: boolean = true;
   hayCategorias: boolean = true;
 
-  
+
 
   formularioPerfil: FormGroup = this.fb.group({
     descripcion: [`${this.perfil?.descripcion || ""} `, [Validators.required, Validators.minLength(5)]],
@@ -106,21 +106,19 @@ export class PerfilComponent implements OnInit {
 
 
     const perfil: PerfilM = new PerfilM(name, descripcion, hobbies, gustos, categorias, etiquetas, foto);
-    this.perfilService.agregarPerfil(perfil).subscribe((resp: any) => { console.log('respuesta') });
-
-    switch (this.usuario?.idTipoCuenta) {
-      case 1:
-        this.router.navigate(['./editor/publicar'])
-        break;
-      case 3:
-        this.router.navigate(['./usuario/inicio']);
-        break;
-      default:
-        this.router.navigate(['./autenticacion/login']);
-        break;
-    }
-
-
+    this.perfilService.agregarPerfil(perfil).subscribe((resp: any) => {
+      switch (this.usuario?.idTipoCuenta) {
+        case 1:
+          this.router.navigate(['./editor/publicar'])
+          break;
+        case 3:
+          this.router.navigate(['./usuario/inicio']);
+          break;
+        default:
+          this.router.navigate(['./autenticacion/login']);
+          break;
+      }
+    });
   }
 
   // Funcionamiento chips

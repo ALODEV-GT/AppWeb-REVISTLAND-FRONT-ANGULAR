@@ -1,10 +1,21 @@
-<h1>Recomendaciones para ti</h1>
-<mat-divider></mat-divider>
-<br>
+<div class="contenedor">
+    <div>
+        <div *ngIf="recomendaciones.length > 0; else noHayRecomendaciones" class="titulo-contenedor">
+            <div class="titulo">Recomendaciones para ti</div>
+            <br>
+        </div>
 
-<div fxLayout='row wrap' fxLayout.xs='column' fxLayoutAlign="center" fxLayoutGap="50px">
-    <div fxFlex="45" fxFlex.lg='45' fxFlex.sm="30" *ngFor="let recomendacion of recomendaciones">
-        <br>
-        <app-tarjeta-revista [recomendacion]="recomendacion"></app-tarjeta-revista>
+        <ng-template #noHayRecomendaciones >
+            <div class="titulo-contenedor">
+                <div class="titulo">Ingresa mas categorias o etiquetas para recomendarte revistas</div>
+            </div>
+        </ng-template>
+        
+        <div fxLayout='row wrap' fxLayout.xs='column' fxLayoutAlign="center" fxLayoutGap="50px">
+            <div fxFlex="45" fxFlex.lg='45' fxFlex.sm="30" *ngFor="let recomendacion of recomendaciones">
+                <br>
+                <app-tarjeta-revista [recomendacion]="recomendacion"></app-tarjeta-revista>
+            </div>
+        </div>
     </div>
 </div>

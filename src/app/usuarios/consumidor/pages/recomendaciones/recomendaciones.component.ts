@@ -18,9 +18,7 @@ export class RecomendacionesComponent implements OnInit {
     this.usuario = this.usuarioService.getUsuarioAutenticado();
     this.recomendacionesService.obtenerRecomendaciones(this.usuario?.nombre).subscribe((res: RecomendacionM[]) => {
       this.recomendaciones = res;
-      console.log(res);
-    }
-    );
+    });
   }
 
   ngOnInit(): void {

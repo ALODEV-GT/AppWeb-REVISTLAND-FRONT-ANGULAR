@@ -49,8 +49,11 @@ export class CompraComponent implements OnInit {
     const suscripcion: SuscripcionM = new SuscripcionM(tipoPago, this.detalleRevista.idRevista,
       fechaCompra, this.fechaFinalizacion(fechaCompra), nombreUsuario, this.costoTotal(), 0, 0, 1);
 
-    this.suscripcionService.registrarSuscripcion(suscripcion).subscribe(r => this.mostrarSnakBar('Compra realizada'));
-    this.router.navigate(['./usuario/inicio'])
+    this.suscripcionService.registrarSuscripcion(suscripcion).subscribe((r) => {
+      this.mostrarSnakBar('Compra realizada')
+      this.router.navigate(['./usuario/inicio'])
+    });
+    
   }
 
   fechaFinalizacion(fecha: string) {

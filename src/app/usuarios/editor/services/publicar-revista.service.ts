@@ -4,7 +4,7 @@ import { RevistaM } from '../../../../control/publicarRevista/RevistaM';
 import { VolumenM } from '../../../../control/publicarRevista/VolumenM';
 import { PublicacionM } from '../../../../control/publicarRevista/PublicacionM';
 
-export interface Id{
+export interface Id {
   id: number
 }
 
@@ -17,23 +17,27 @@ export class PublicarRevistaService {
 
   constructor(private http: HttpClient) { }
 
-  public subirArchivoVolumen(file: File){
+  public subirArchivoVolumen(file: File) {
     const formData: FormData = new FormData();
-    
-    formData.append("datafile",file, file.name);
+
+    formData.append("datafile", file, file.name);
 
     return this.http.post<Id>(`${this.baseUrl}?accion=subirArchivoRevista`, formData);
   }
 
-  public agregarRevista(nuevaRevista: RevistaM){
+  public agregarRevista(nuevaRevista: RevistaM) {
     return this.http.post<Id>(`${this.baseUrl}?accion=crearRevista`, nuevaRevista);
   }
 
-  public agregarVolumen(nuevoVolumen: VolumenM){
-    return this.http.post<void>(`${this.baseUrl}?accion=crearVolumen`,nuevoVolumen);
+  public agregarVolumen(nuevoVolumen: VolumenM) {
+    return this.http.post<void>(`${this.baseUrl}?accion=crearVolumen`, nuevoVolumen);
   }
 
-  public agregarPublicacion(nuevaPublicacion: PublicacionM){
+  public agregarPublicacion(nuevaPublicacion: PublicacionM) {
     return this.http.post<void>(`${this.baseUrl}?accion=crearPublicacion`, nuevaPublicacion);
+  }
+
+  public eliminarVolumen(idArchivo: number) {
+    return this.http.get<void>(`${this.baseUrl}?accion=eliminarVolumen&idArchivo=${idArchivo}`);
   }
 }
