@@ -11,6 +11,7 @@ import { PublicacionM } from 'src/control/publicarRevista/PublicacionM';
 import { Id, PublicarRevistaService } from '../../services/publicar-revista.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Fecha, FechaService } from '../../../../services/fecha.service';
 
 @Component({
   selector: 'app-publicar',
@@ -25,7 +26,8 @@ export class PublicarComponent implements OnInit {
     private usuarioService: UsuarioService,
     private publicarRevistaService: PublicarRevistaService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private fechaService: FechaService    
   ) {
     this.usuario = this.usuarioService.getUsuarioAutenticado();
     this.perfilService.obtenerCategorias().subscribe((resp: string[]) => this.allCategorias = resp);
@@ -42,7 +44,9 @@ export class PublicarComponent implements OnInit {
   })
 
   ngOnInit(): void {
-
+    this.fechaService.obtenerFecha().subscribe((resp: Fecha) => {
+      this.miFormulario.controls["fechaPublicacion"].setValue(resp.fecha);
+    });
   }
 
   usuario: UsuarioM | undefined;

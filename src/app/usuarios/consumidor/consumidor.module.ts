@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.component';
 import { TarjetaMiRevistaComponent } from './components/tarjeta-mi-revista/tarjeta-mi-revista.component';
 import { VolumenesComponent } from './pages/volumenes/volumenes.component';
+import { AnunciosComponent } from './components/anuncios/anuncios.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { VolumenesComponent } from './pages/volumenes/volumenes.component';
     MisRevistasComponent,
     TarjetaMiRevistaComponent,
     VolumenesComponent,
+    AnunciosComponent,
   ],
   imports: [
     CommonModule,

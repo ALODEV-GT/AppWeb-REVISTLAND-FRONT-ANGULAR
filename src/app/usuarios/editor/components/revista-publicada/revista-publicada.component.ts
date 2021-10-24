@@ -11,6 +11,7 @@ import { DetalleRevistaService } from 'src/app/usuarios/consumidor/services/deta
 import { DescargarArchivoService } from '../../../consumidor/services/descargar-archivo.service';
 import { PublicarRevistaService } from '../../services/publicar-revista.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Fecha, FechaService } from '../../../../services/fecha.service';
 
 @Component({
   selector: 'app-revista-publicada',
@@ -38,7 +39,8 @@ export class RevistaPublicadaComponent {
     private detalleRevistaService: DetalleRevistaService,
     private descargarArchivoService: DescargarArchivoService,
     private publicarRevistaService: PublicarRevistaService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private fechaService: FechaService
   ) {
     this.usuario = this.usuarioService.getUsuarioAutenticado();
   }
@@ -51,6 +53,9 @@ export class RevistaPublicadaComponent {
   ngOnInit(): void {
     this.permisosRevistaService.esInteractiva(this.idPublicacion).subscribe((resp: PermitirM) => { this.permitirInteracciones = resp });
     this.permisosRevistaService.permitirSuscripciones(this.idPublicacion).subscribe((resp: PermitirM) => { this.permitirSuscripciones = resp });
+    this.fechaService.obtenerFecha().subscribe((resp: Fecha) => {
+      this.miFormulario.controls["fechaPublicacion"].setValue(resp.fecha);
+    });
   }
 
   fechaActual(): string {

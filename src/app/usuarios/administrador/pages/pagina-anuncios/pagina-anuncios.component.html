@@ -1,1 +1,167 @@
-<p>pagina-anuncios works!</p>
+<div class="contenedor">
+    <mat-card class="tamano redondear">
+        <button mat-raised-button type="button" routerLink='/administrador/lista-anuncios' class="full-width elemento"
+            color="warn">
+            VER TODOS LOS ANUNCIOS
+        </button>
+        <mat-divider></mat-divider>
+        <div>
+            <mat-card-header id="header" class="centrar">
+                <br />
+                Nuevo anuncio
+            </mat-card-header>
+        </div>
+        <br>
+        <form (ngSubmit)='guardarAnuncio()' autocomplete="off" [formGroup]="miFormulario">
+            <div fxLayout="column">
+                <mat-form-field appearance="outline">
+                    <mat-label>Seleccionar un anunciante</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let anunciante of allAnunciantes" [value]="anunciante"
+                            (click)="cambiarInputAnunciante(anunciante)">
+                            {{anunciante | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div *ngIf="nombreInvalidoAnunciante" class="form-text text-danger">
+                    Debes ingresar el nombre del anunciante
+                </div>
+                <mat-form-field class="full-width " appearance="outline">
+                    <mat-label> Nombre del anunciante</mat-label>
+                    <input formControlName="nombreAnunciante" type="text" matInput />
+                </mat-form-field>
+
+                <mat-radio-group formControlName="tipoAnuncio" (change)="mostrarAgregarContenidoAnuncio()">
+                    <div fxLayout="row" fxLayoutAlign="space-around center">
+                        <div class="tamano-sub">
+                            <mat-radio-button value="1">Texto</mat-radio-button>
+                        </div>
+                        <div class="tamano-sub">
+                            <mat-radio-button value="2">Imagen</mat-radio-button>
+                        </div>
+                        <div class="tamano-sub">
+                            <mat-radio-button value="3">Video</mat-radio-button>
+                        </div>
+                    </div>
+                </mat-radio-group>
+
+                <div>
+                    <div class="elemento" fxLayout="row gap">
+                        <label>Fecha de compra: </label>
+                        <input formControlName="fechaCompra" type="date" class="select-date" />
+                    </div>
+                </div>
+
+                <div *ngIf="cantidadDiasInvalido" class="form-text text-danger">
+                    Ingresa un valor valido
+                </div>
+                <mat-form-field class="full-width " appearance="outline">
+                    <mat-label> Cantidad de dias</mat-label>
+                    <input (change)="cambiarTotal()" formControlName="cantidadDias" type="number" matInput />
+                </mat-form-field>
+
+                <div>
+                    <div fxLayout="row" class="detalle">
+                        <span> Costo: {{costoTotal}}</span>
+                    </div>
+                </div>
+                <br>
+
+                <div class="subtitulo">Categorias</div>
+                <div *ngIf="!hayCategorias" class="form-text text-danger">
+                    Almenos selecciona una categoria
+                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Seleccionar</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let categoria of allCategorias" [value]="categoria"
+                            (click)="agregarCategoria(categoria)">
+                            {{categoria | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <mat-chip-list>
+                    <mat-chip color="accent" selected *ngFor="let categoria of categorias">
+                        {{categoria | titlecase}}
+                        <button matChipRemove>
+                            <mat-icon (click)="cancelarCategoria(categoria)">cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                </mat-chip-list>
+
+
+
+
+                <br>
+                <div class="subtitulo">Etiquetas</div>
+
+                <div *ngIf="!hayEtiquetas" class="form-text text-danger">
+                    Almenos selecciona una etiqueta
+                </div>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Seleccionar</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let etiqueta of allEtiquetas" [value]="etiqueta"
+                            (click)="agregarEtiqueta(etiqueta)">
+                            {{etiqueta | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-chip-list #chipList aria-label="Fruit selection">
+                        <mat-chip color="warn" selected *ngFor="let etiqueta of etiquetas" [selectable]="selectable"
+                            [removable]="removable" (removed)="remove(etiqueta)">
+                            {{etiqueta | titlecase}}
+                            <button matChipRemove *ngIf="removable">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip>
+                        <input placeholder="Agregar nueva etiqueta" [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                </mat-form-field>
+
+
+                <div *ngIf="textoInvalidoAnuncio" class="form-text text-danger">
+                    Debes ingresar el contenido del anuncio
+                </div>
+                <div *ngIf="idTipoAnuncio==3" class="form-text text-danger">
+                    OJO: Ingresa el link de un video
+                </div>
+                <div *ngIf="idTipoAnuncio==1 || idTipoAnuncio==3">
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label> Texto del anuncio</mat-label>
+                        <input formControlName="textoAnuncio" type="text" matInput />
+                    </mat-form-field>
+                </div>
+
+
+                <div *ngIf="idTipoAnuncio==2">
+
+                    <input class="invisible" type="file" (change)="onPhotoSelected($event)" #subirImagen />
+
+                    <div *ngIf="!archivoSubido" class="form-text text-danger">
+                        Debes subir un archivo
+                    </div>
+                    <button mat-raised-button type="button" class="full-width elemento" color="primary"
+                        (click)="subirImagen.click()">
+                        Subir archivo
+                    </button>
+                </div>
+
+                <div class="boton">
+                    <button mat-raised-button class="elemento" type="submit" color="accent">
+                        Crear anuncio
+                    </button>
+                </div>
+            </div>
+        </form>
+        <mat-card-content id="contenido"> </mat-card-content>
+    </mat-card>
+</div>

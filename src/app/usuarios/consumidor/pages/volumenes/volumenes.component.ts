@@ -13,6 +13,7 @@ import { MeGustaM } from '../../../../../control/interacciones/MeGustaM';
 import { PermisosRevistaService } from '../../../editor/services/permisos-revista.service';
 import { PermitirM } from '../../../../../control/permisos-revista/PermitirM';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Fecha, FechaService } from '../../../../services/fecha.service';
 
 @Component({
   selector: 'app-volumenes',
@@ -37,7 +38,8 @@ export class VolumenesComponent implements OnInit {
     private fb: FormBuilder,
     private interaccionesService: InteraccionesService,
     private permisosRevistaService: PermisosRevistaService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private fechaService: FechaService
   ) {
     this.usuario = this.usuarioService.getUsuarioAutenticado();
   }
@@ -50,6 +52,10 @@ export class VolumenesComponent implements OnInit {
       this.permisosRevistaService.esInteractiva(this.revista.idPublicacion).subscribe((res: PermitirM) => {
         this.permitirInteracciones = res.permitir;
       });
+    });
+
+    this.fechaService.obtenerFecha().subscribe((resp: Fecha) => {
+      this.miFormulario.controls["fechaPublicacion"].setValue(resp.fecha);
     });
   }
 

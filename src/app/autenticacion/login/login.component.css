@@ -40,3 +40,11 @@
     border-radius: 130px;
 }
 
+.select-date{
+    border:none;
+    border-bottom: 1px solid #777777;
+    width: 50%;
+    font-size: 13px;
+    background: #424242;
+    color: blanchedalmond;
+}

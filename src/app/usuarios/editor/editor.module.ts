@@ -10,6 +10,12 @@ import { RevistaPublicadaComponent } from './components/revista-publicada/revist
 import { MisRevistasComponent } from './pages/mis-revistas/mis-revistas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AgregarVolumenComponent } from './pages/agregar-volumen/agregar-volumen.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
+import { ComentariosComponent } from './reportes/comentarios/comentarios.component';
+import { SuscripcionesComponent } from './reportes/suscripciones/suscripciones.component';
+import { RevistasMasGustadasComponent } from './reportes/revistas-mas-gustadas/revistas-mas-gustadas.component';
+import { GananciasComponent } from './reportes/ganancias/ganancias.component';
+import { ListadoComponent } from './reportes/listado/listado.component';
 
 
 
@@ -19,7 +25,13 @@ import { AgregarVolumenComponent } from './pages/agregar-volumen/agregar-volumen
     PublicarComponent,
     RevistaPublicadaComponent,
     MisRevistasComponent,
-    AgregarVolumenComponent
+    AgregarVolumenComponent,
+    ReportesComponent,
+    ComentariosComponent,
+    SuscripcionesComponent,
+    RevistasMasGustadasComponent,
+    GananciasComponent,
+    ListadoComponent
   ],
   imports: [
     CommonModule,

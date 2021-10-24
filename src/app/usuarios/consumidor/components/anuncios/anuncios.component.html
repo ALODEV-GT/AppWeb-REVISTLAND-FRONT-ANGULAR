@@ -1,0 +1,25 @@
+<div fxLayout="column" class="contenedor">
+
+    <div class="cuadrado" *ngFor="let anuncio of anuncios">
+        <!-- texto -->
+        <div *ngIf="anuncio.idTipoAnuncio==1">
+
+            <div class="card contenedor-texto max-width">
+                <div class="card-body">
+                    <p class="card-text texto-anuncio">{{anuncio.textoAnuncio}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- imagen -->
+        <img *ngIf="anuncio.idTipoAnuncio==2" class="max-width" [src]="anuncio.imagen">
+
+        <!-- video -->
+        <iframe *ngIf="anuncio.idTipoAnuncio==3" class="max-width" height="350px"
+            [src]="formatearLink(anuncio.linkVideo)" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+</div>

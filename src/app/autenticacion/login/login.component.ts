@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../services/usuario.service';
 import { UsuarioM } from '../../../control/autenticacion/UsuarioM';
+import { FechaService, Fecha } from '../../services/fecha.service';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +11,30 @@ import { UsuarioM } from '../../../control/autenticacion/UsuarioM';
   styleUrls: ['./login.component.css']
 })
 
+export class LoginComponent implements OnInit {
 
-
-export class LoginComponent {
-
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private usuarioService: UsuarioService,
-    private router: Router) { }
+    private router: Router,
+    private fechaService: FechaService
+  ) { }
+
+  fechaActual! : string; 
+
+  fechaInvalida: boolean = false;
+
+  ngOnInit(): void {
+    this.fechaService.obtenerFecha().subscribe((resp: Fecha) => {
+      this.miFormulario.controls["fechaActual"].setValue(resp.fecha);
+      this.fechaActual = resp.fecha;
+    });
+  }
 
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.minLength(5)]],
-    contrasena: ['', [Validators.required, Validators.minLength(5)]]
+    contrasena: ['', [Validators.required, Validators.minLength(5)]],
+    fechaActual: ['', Validators.required],
   });
 
   noExiste: boolean = false;
@@ -31,9 +45,18 @@ export class LoginComponent {
       return;
     }
 
+    const fechaActual: string = this.miFormulario.get('fechaActual')?.value;
+    if (this.esInvalidoFecha(this.fechaActual, fechaActual )) {
+      return;
+    }
+
     console.log("valido")
     const nombre: string = this.miFormulario.get('nombre')?.value;
     const contrasena: string = this.miFormulario.get('contrasena')?.value;
+
+    const fechaO: Fecha = {
+      fecha: fechaActual,
+    }
 
     const usuario: UsuarioM = new UsuarioM(nombre, contrasena, 0);
 
@@ -43,9 +66,11 @@ export class LoginComponent {
         console.log("No existe");
       } else {
 
+        this.fechaService.cambiarFecha(fechaO).subscribe(r => console.log(r));
+
         this.usuarioService.verificarTienePerfil(resp.nombre).subscribe((m) => {
           console.log(m);
-          
+
           if (m.length == undefined) {
             switch (resp.idTipoCuenta) {
               case 1:
@@ -81,6 +106,18 @@ export class LoginComponent {
       }
     });
 
+  }
+
+  esInvalidoFecha(fechaActual: string, nuevaFecha: string): boolean {
+    let invalido: boolean = false;
+    this.fechaInvalida = false;
+    const primeraFecha = new Date(fechaActual);
+    const segundaFecha = new Date(nuevaFecha);
+    if (segundaFecha < primeraFecha) {
+      invalido = true;
+      this.fechaInvalida = true;
+    }
+    return invalido;
   }
 
 

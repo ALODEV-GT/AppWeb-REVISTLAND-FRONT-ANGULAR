@@ -1,0 +1,26 @@
+.cuadrado{
+    width: 100%;
+    height: auto;
+}
+
+.contenedor{
+    height: auto;
+    min-height: 100%;
+}
+
+.max-width{
+    width: 100%;
+}
+
+.texto-anuncio{
+    font-size: 45px;
+    line-height: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.contenedor-texto{
+    height: min-content;
+    text-align: center;
+    background-color: yellow;
+}

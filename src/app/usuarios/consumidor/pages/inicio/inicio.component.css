@@ -23,3 +23,22 @@
   .clickeable{
     cursor: pointer;
   }
+
+  .contenido {
+    height: auto;
+    min-height: 100%;
+    width: 80%;
+}
+
+.anuncios{
+    height: auto;
+    min-height: 100%;
+    width: 20%;
+}
+
+.contenedor {
+  height: auto;
+  min-height: 100%;
+  width: 100%;
+  background-color: #5e60ce;
+}

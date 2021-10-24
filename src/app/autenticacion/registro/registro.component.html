@@ -49,8 +49,13 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-
           </div>
+          <div>
+            <span *ngIf="fechaInvalida" class="form-text text-danger">
+              No puedes regresar al pasado
+            </span>
+          </div>
+          <input formControlName="fechaActual" type="date" class="select-date" #gu/>
         </mat-card-content>
 
         <mat-card-actions fxLayoutAlign="center center" fxLayout="column">
@@ -62,19 +67,5 @@
       </form>
 
     </mat-card>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <h5>Valid</h5>
-    <pre>{{miFormulario.valid}}</pre>
-
-    <h5>Form errors</h5>
-    <pre>{{miFormulario.errors | json}}</pre>
-
-    <h5>Nombre Usuario</h5>
-    <pre>{{miFormulario.controls.nombre.errors | json}}</pre>
-
   </div>
 </div>

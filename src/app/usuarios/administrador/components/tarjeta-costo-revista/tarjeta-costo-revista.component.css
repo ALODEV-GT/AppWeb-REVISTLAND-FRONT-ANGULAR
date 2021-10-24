@@ -1,0 +1,23 @@
+.full-width {
+    width: 100%;
+}
+
+.tamano{
+    width: max-content;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.redondear-g {
+    border-radius: 15px;
+}
+
+.elemento{
+    font-size: 23px;
+}
+
+.titulo{
+    font-size: 35px;
+}

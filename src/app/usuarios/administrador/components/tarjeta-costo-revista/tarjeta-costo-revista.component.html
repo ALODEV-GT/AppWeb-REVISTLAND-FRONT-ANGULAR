@@ -1,0 +1,29 @@
+<mat-card class="redondear-g tamano">
+
+        <form (ngSubmit)='cambiarCostoDia()' autocomplete="off" [formGroup]="miFormulario" fxLayout="column">
+
+            <div class="titulo"> {{revistaCosto.nombreRevista}} </div>
+            <div>
+                <mat-label class="subtitulo">Editor: </mat-label>
+                {{revistaCosto.editor}}
+            </div>
+            <div>
+                <mat-label class="subtitulo">Fecha de publicacion: </mat-label>
+                {{revistaCosto.fechaPublicacion}}
+            </div>
+
+
+            <div>
+                <mat-form-field appearance="outline">
+                    <input formControlName="costoDia" type="number" matInput />
+                </mat-form-field>
+            </div>
+
+            <div>
+                <button mat-raised-button class="elemento" type="submit" color="accent">
+                    Cambiar
+                </button>
+            </div>
+        </form>
+
+</mat-card>

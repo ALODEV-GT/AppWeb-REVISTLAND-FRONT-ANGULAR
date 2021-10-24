@@ -1,0 +1,32 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    min-height: 100%;
+    align-items: center;
+    background-color: #5e60ce;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.redondear {
+    border-radius: 20px;
+}
+
+.tamano {
+    width: min-content;
+}
+
+.elemento{
+    margin: 12px 0px;
+    font-size: 30px;
+    height: 50px;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}

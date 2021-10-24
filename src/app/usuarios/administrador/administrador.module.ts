@@ -9,8 +9,17 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { TarjetaAnuncioComponent } from './components/tarjeta-anuncio/tarjeta-anuncio.component';
+import { ListaAnunciosComponent } from './pages/lista-anuncios/lista-anuncios.component';
+import { TarjetaCostoRevistaComponent } from './components/tarjeta-costo-revista/tarjeta-costo-revista.component';
+import { ListadoComponent } from './reportes/listado/listado.component';
+import { GananciasRevistasComponent } from './reportes/ganancias-revistas/ganancias-revistas.component';
+import { GananciasAnunciosComponent } from './reportes/ganancias-anuncios/ganancias-anuncios.component';
+import { GananciasTotalesComponent } from './reportes/ganancias-totales/ganancias-totales.component';
+import { PopularesComponent } from './reportes/populares/populares.component';
+import { MasComentadasComponent } from './reportes/mas-comentadas/mas-comentadas.component';
+import { AnunciosComponent } from './reportes/anuncios/anuncios.component';
+import { EfectividadAnunciosComponent } from './reportes/efectividad-anuncios/efectividad-anuncios.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +27,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     PaginaAnunciosComponent,
     PaginaReportesComponent,
     PaginaGeneralesComponent,
-    PaginaCostoPorDiaComponent
+    PaginaCostoPorDiaComponent,
+    TarjetaAnuncioComponent,
+    ListaAnunciosComponent,
+    TarjetaCostoRevistaComponent,
+    ListadoComponent,
+    GananciasRevistasComponent,
+    GananciasAnunciosComponent,
+    GananciasTotalesComponent,
+    PopularesComponent,
+    MasComentadasComponent,
+    AnunciosComponent,
+    EfectividadAnunciosComponent
   ],
   imports: [
     CommonModule,

@@ -8,6 +8,7 @@ import { SuscripcionM } from '../../../../../control/suscripcion/SuscripcionM';
 import { SuscripcionService } from '../../services/suscripcion.service';
 import { UsuarioService } from '../../../../autenticacion/services/usuario.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Fecha, FechaService } from '../../../../services/fecha.service';
 
 @Component({
   selector: 'app-compra',
@@ -25,7 +26,8 @@ export class CompraComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private suscripcionService: SuscripcionService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private fechaService: FechaService
   ) { }
 
   ngOnInit(): void {
@@ -33,11 +35,20 @@ export class CompraComponent implements OnInit {
       switchMap(({ revista }) => this.detalleRevistaService.obtenerDetalleRevista(revista))
 
     ).subscribe((detalleRevista: DescripcionRevistaM) => this.detalleRevista = detalleRevista);
+
+    this.fechaService.obtenerFecha().subscribe((resp: Fecha)=>
+    {
+      this.miFormulario.controls["fechaCompra"].setValue(resp.fecha);
+    });
+
+    this.fechaService.obtenerFecha().subscribe((resp: Fecha) => {
+      this.miFormulario.controls["fechaCompra"].setValue(resp.fecha);
+    });
   }
 
   miFormulario: FormGroup = this.fb.group({
     tipoPago: ["1", Validators.required],
-    fechaCompra: [`${this.fechaActual()}`, Validators.required]
+    fechaCompra: ["", Validators.required]
   })
 
   registrarSuscripcion() {

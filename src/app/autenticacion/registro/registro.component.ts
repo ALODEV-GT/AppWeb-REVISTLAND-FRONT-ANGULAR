@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Fecha, FechaService } from 'src/app/services/fecha.service';
 import { TipoCuenta } from '../../../control/autenticacion/TipoCuenta.enum';
 import { UsuarioM } from '../../../control/autenticacion/UsuarioM';
 import { NombreUsuarioValidatorService } from '../services/nombre-usuario-validator.service';
@@ -17,19 +18,24 @@ export class RegistroComponent implements OnInit {
 
   tiposCuenta: string[] = [];
 
+  fechaActual!: string;
 
+  fechaInvalida: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private nombreUsuarioValidator: NombreUsuarioValidatorService,
     private usuarioService: UsuarioService,
-    private router: Router
-  ) {
-
-  }
+    private router: Router,
+    private fechaService: FechaService
+  ) { }
 
   ngOnInit(): void {
     this.construirArregloTipoCuenta();
+    this.fechaService.obtenerFecha().subscribe((resp: Fecha) => {
+      this.miFormulario.controls["fechaActual"].setValue(resp.fecha);
+      this.fechaActual = resp.fecha;
+    });
   }
 
   construirArregloTipoCuenta() {
@@ -54,7 +60,8 @@ export class RegistroComponent implements OnInit {
     nombre: ['', [Validators.required, Validators.minLength(5)], [this.nombreUsuarioValidator]],
     pContrasena: ['', [Validators.required, Validators.minLength(5)]],
     sContrasena: ['', [Validators.required, Validators.minLength(5)]],
-    tipoCuenta: ['', Validators.required]
+    tipoCuenta: ['', Validators.required],
+    fechaActual: ['', Validators.required],
   },
     {
       validators: [this.contrasenasIguales('pContrasena', 'sContrasena')]
@@ -78,6 +85,18 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+  esInvalidoFecha(fechaActual: string, nuevaFecha: string): boolean {
+    let invalido: boolean = false;
+    this.fechaInvalida = false;
+    const primeraFecha = new Date(fechaActual);
+    const segundaFecha = new Date(nuevaFecha);
+    if (segundaFecha < primeraFecha) {
+      invalido = true;
+      this.fechaInvalida = true;
+    }
+    return invalido;
+  }
+
   campoEsValido(control: string) {
     return this.miFormulario.controls[control].errors && this.miFormulario.controls[control].touched;
   }
@@ -90,11 +109,22 @@ export class RegistroComponent implements OnInit {
       return;
     }
 
+    const fechaActual: string = this.miFormulario.get('fechaActual')?.value;
+
+    if (this.esInvalidoFecha(this.fechaActual, fechaActual )) {
+      return;
+    }
+
     const nombre: string = this.miFormulario.get('nombre')?.value;
     const contrasena: string = this.miFormulario.get('sContrasena')?.value;
     const tipo: TipoCuenta = this.miFormulario.get('tipoCuenta')?.value;
-
     const nuevoUsuario: UsuarioM = new UsuarioM(nombre, contrasena, this.obtenerIdTipoCuenta(tipo));
+
+    const fechaO: Fecha = {
+      fecha: fechaActual,
+    }
+
+    this.fechaService.cambiarFecha(fechaO).subscribe(r => console.log(r));
 
     this.usuarioService.agregarNuevoUsuario(nuevoUsuario).subscribe((resp: UsuarioM) => {
       switch (tipo) {

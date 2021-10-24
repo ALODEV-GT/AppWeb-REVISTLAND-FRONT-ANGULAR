@@ -26,12 +26,20 @@
             </mat-form-field>
             <mat-form-field appearance="fill" class="margen">
               <mat-label>Contraseña</mat-label>
-              <input  formControlName="contrasena" matInput type="password" class="tamano-letra">
+              <input formControlName="contrasena" matInput type="password" class="tamano-letra">
             </mat-form-field>
           </div>
+          <div>
+            <span *ngIf="fechaInvalida" class="form-text text-danger">
+              No puedes regresar al pasado
+            </span>
+          </div>
+          <input formControlName="fechaActual" type="date" class="select-date" #gu/>
         </mat-card-content>
 
         <mat-card-actions fxLayoutAlign="center center" fxLayout="column">
+
+
           <button mat-raised-button color="primary" class="tamano-letra">Ingresar</button>
           <br>
           <a routerLink='/autenticacion/registro' class="vinculo" href="#">Crear una cuenta</a>

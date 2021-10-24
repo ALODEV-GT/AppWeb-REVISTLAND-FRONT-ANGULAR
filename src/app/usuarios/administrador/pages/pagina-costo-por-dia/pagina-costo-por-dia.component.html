@@ -1,1 +1,8 @@
-<p>pagina-costo-por-dia works!</p>
+<div class="contenedor">
+    <div fxLayout='row wrap' fxLayout.xs='column' fxLayoutAlign="center">
+        <div fxFlex="15" fxFlex.lg='19' fxFlex.md="30" *ngFor="let revistaCosto of revistasCostos">
+            <br>
+            <app-tarjeta-costo-revista [revistaCosto]="revistaCosto"></app-tarjeta-costo-revista>
+        </div>
+    </div>
+</div>

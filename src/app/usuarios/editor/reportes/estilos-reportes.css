@@ -1,0 +1,42 @@
+.full-width {
+    width: 100%;
+}
+
+.redondear {
+    border-radius: 20px;
+}
+
+.tamano {
+    width: max-content;
+}
+
+.elemento{
+    margin: 12px 0px;
+    font-size: 27px;
+    height: 50px;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.tabla{
+    font-size: 19px;
+    
+}
+
+.contenedor {
+    background-color: rgb(34, 34, 34);
+    color: #fff;
+    border-top: 1px solid #fff;
+    padding: 12px;
+}
+
+.bordes{
+    border-bottom: 1px solid rgb(116, 116, 116);
+}
+.contenedor>div {
+    margin-left: 7px;
+}

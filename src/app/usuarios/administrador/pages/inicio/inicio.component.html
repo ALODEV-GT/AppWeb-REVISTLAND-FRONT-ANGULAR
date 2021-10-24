@@ -1,15 +1,17 @@
 <div>
     <mat-toolbar class="toolbar">
-        <span>REVISTLAND</span>
+        <span class="clickeable" routerLink='./costo'>
+            REVISTLAND
+        </span>
 
         <span class="spacer"></span>
 
 
-        <button class="boton"  mat-raised-button color="primary">Establecer costo</button>
+        <button class="boton" routerLink='./costo' mat-raised-button color="primary">Establecer costo</button>
 
-        <button class="boton"  mat-raised-button color="primary">Anuncios</button>
+        <button class="boton" routerLink='./anuncios' mat-raised-button color="primary">Anuncios</button>
        
-        <button class="boton" mat-raised-button color="primary">Reportes</button>
+        <button class="boton" routerLink='./reportes/listado' mat-raised-button color="primary">Reportes</button>
 
         <button class="boton" routerLink='./generales' mat-raised-button color="primary">Generales</button>
 

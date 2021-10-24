@@ -1,7 +1,21 @@
 .contenedor {
     height: auto;
     min-height: 100%;
+    width: 100%;
     background-color: #5e60ce;
+}
+
+.contenido {
+    height: auto;
+    min-height: 100%;
+    width: 80%;
+}
+
+.anuncios{
+    height: auto;
+    min-height: 100%;
+    width: 20%;
+    background-color: crimson;
 }
 
 .titulo{

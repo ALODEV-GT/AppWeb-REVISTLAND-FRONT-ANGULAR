@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { UsuarioService } from 'src/app/autenticacion/services/usuario.service';
 import { UsuarioM } from 'src/control/autenticacion/UsuarioM';
 import { VolumenM } from 'src/control/publicarRevista/VolumenM';

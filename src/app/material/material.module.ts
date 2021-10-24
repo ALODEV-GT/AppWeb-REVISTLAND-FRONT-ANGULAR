@@ -13,6 +13,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [],
@@ -30,7 +31,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSlideToggleModule,
     MatDividerModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule { }
