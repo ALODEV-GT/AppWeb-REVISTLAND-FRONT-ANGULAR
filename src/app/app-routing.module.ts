@@ -29,6 +29,9 @@ const rutas: Routes = [
     )
   },
   {
+    path: '', redirectTo: 'autenticacion/login', pathMatch: 'full'
+  },
+  {
     path: '404', //Pagina de error
     component: ErrorPageComponent //Componente relacionado con el path.
   },
