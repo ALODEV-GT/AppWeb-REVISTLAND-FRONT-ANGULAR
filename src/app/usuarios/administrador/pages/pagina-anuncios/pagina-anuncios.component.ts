@@ -30,7 +30,7 @@ export class PaginaAnunciosComponent implements OnInit {
   nombreInvalidoAnunciante: boolean = false;
 
 
-  allAnunciantes: string[] = ['EOOL', 'MURU', 'BACO'];
+  allAnunciantes: string[] = [];
   allCategorias: string[] = [];
   allEtiquetas: string[] = []
 
@@ -41,12 +41,12 @@ export class PaginaAnunciosComponent implements OnInit {
     private fb: FormBuilder,
     private perfilService: PerfilService,
     private fechaService: FechaService,
-    private publicarRevistaService: PublicarRevistaService,
     private anunciosService: AnunciosService,
     private snackBar: MatSnackBar
   ) {
     this.perfilService.obtenerCategorias().subscribe((resp: string[]) => this.allCategorias = resp);
     this.perfilService.obtenerEtiquetas().subscribe((resp: string[]) => this.allEtiquetas = resp);
+    this.anunciosService.obtenerEmpresasAnunciantes().subscribe((resp: string[])=> this.allAnunciantes = resp);
   }
 
   ngOnInit(): void {

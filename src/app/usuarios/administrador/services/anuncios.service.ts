@@ -55,6 +55,10 @@ export class AnunciosService {
     return this.http.post<Id>(`${this.baseUrl}?accion=agregarVideoAnuncio`, linkVideo);
   }
 
+  obtenerEmpresasAnunciantes() {
+    return this.http.get<string[]>(`${this.baseUrl}?accion=obtenerAnunciantes`);
+  }
+
   obtenerRecomendacionesAnuncios(nombreUsuario: string | undefined) {
     return this.http.get<AnuncioMostrarM[]>(`${this.baseUrl}?accion=obtenerRecomendacionesAnuncios&nombre=${nombreUsuario}`);
   }
