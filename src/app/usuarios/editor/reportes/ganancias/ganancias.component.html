@@ -20,42 +20,41 @@
         </div>
     </div>
 
-    <div class="contenedor d-inline-flex">
-        GANANCIA TOTAL:
-        80
-    </div>
-    <!-- <div class="contenedor d-inline-flex">
-        TOTAL VENDIDO:
-        1000
-    </div> -->
-    <br>
-    <br>
-    <div>
-        <table class="table tabla">
-            <thead class="table-dark">
-                <tr class="bordes">
-                    <td colspan="3"><strong>Revista: </strong> Las historias de lol </td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="3"><strong>Editor: </strong> NombreEditor</td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="3"><strong>Ganancia total: </strong> 500</td>
-                </tr>
-                <tr>
-                    <th>NOMBRE DE USUARIO</th>
-                    <th>FECHA DE SUSCRIPCION</th>
-                    <th>GANANCIA</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Brayan</td>
-                    <td>21/12/21</td>
-                    <td>350.63</td>
-                </tr>
-            </tbody>
-        </table>
+    <div *ngFor="let reporte of reportes">
+        <div class="contenedor d-inline-flex">
+            GANANCIA TOTAL:
+            {{reporte.gananciaTotal}}
+        </div>
+
+        <br>
+        <br>
+        <div *ngFor="let tabla of reporte.tablas">
+            <table class="table tabla">
+                <thead class="table-dark">
+                    <tr class="bordes">
+                        <td colspan="3"><strong>Revista: </strong> {{tabla.datosRevista.nombreRevista}} </td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="3"><strong>Editor: </strong> {{tabla.datosRevista.nombreEditor}}</td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="3"><strong>Ganancia total: </strong> {{tabla.gananciaTotal}}</td>
+                    </tr>
+                    <tr>
+                        <th>NOMBRE DE USUARIO</th>
+                        <th>FECHA DE SUSCRIPCION</th>
+                        <th>GANANCIA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let registro of tabla.registrosGanancias">
+                        <td>{{registro.nombreUsuario}}</td>
+                        <td>{{registro.fechaSuscripcion}}</td>
+                        <td>{{registro.ganancia}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </div>

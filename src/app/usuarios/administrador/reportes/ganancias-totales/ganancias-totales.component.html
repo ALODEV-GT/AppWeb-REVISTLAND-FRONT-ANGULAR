@@ -20,93 +20,96 @@
         </div>
     </div>
     <br><br>
-    <div class="contenedor d-inline-flex tabla">
-        GANANCIA TOTAL POR REVISTAS:
-        80
-    </div>
-    <div class="contenedor d-inline-flex tabla">
-        GANANCIA TOTAL POR ANUNCIOS:
-        70
-    </div>
-    <div class="contenedor d-inline-flex tabla">
-        GANANCIA TOTAL:
-        150
+    <div *ngFor="let reporte of reportes">
+        <div class="contenedor d-inline-flex tabla">
+            GANANCIA TOTAL POR REVISTAS:
+            {{reporte.gananciaTotalRevistas}}
+        </div>
+        <div class="contenedor d-inline-flex tabla">
+            GANANCIA TOTAL POR ANUNCIOS:
+            {{reporte.gananciaTotalAnuncios}}
+        </div>
+        <div class="contenedor d-inline-flex tabla">
+            GANANCIA TOTAL:
+            {{reporte.gananciaTotal}}
+        </div>
+
+        <br><br>
+        <div style="margin-right: 10px ">
+            <h1>GANANCIAS POR SUSCRIPCIONES</h1>
+        </div>
+
+        <div *ngFor="let tablaRevista of reporte.registrosRevista">
+            <table class="table tabla">
+                <thead class="table-dark">
+                    <tr class="bordes">
+                        <td colspan="2"><strong>Revista: </strong> {{tablaRevista.datosRevista.nombreRevista}} </td>
+                        <td colspan="3"><strong>Total de ingresos: </strong> {{tablaRevista.totalIngresos}}</td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="2"><strong>Editor: </strong> {{tablaRevista.datosRevista.nombreEditor}}</td>
+                        <td colspan="3"><strong>Total de costos: </strong> {{tablaRevista.totalCostos}}</td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="2"><strong>Numero de suscripciones: </strong> {{tablaRevista.numSuscriptores}}</td>
+                        <td colspan="3"><strong>Total de ganancias: </strong> {{tablaRevista.totalGanancias}}</td>
+                    </tr>
+                    <tr>
+                        <th>NOMBRE DE USUARIO</th>
+                        <th>FECHA DE SUSCRIPCION</th>
+                        <th>INGRESO</th>
+                        <th>COSTO</th>
+                        <th>GANANCIA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let registro of tablaRevista.registros">
+                        <td>{{registro.nombreUsuario}}</td>
+                        <td>{{registro.fechaSuscripcion}}</td>
+                        <td>{{registro.ingreso}}</td>
+                        <td>{{registro.costo}}</td>
+                        <td>{{registro.ganancia}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- por anuncios -->
+        <br><br>
+        <div style="margin-right: 10px ">
+            <h1>GANANCIAS POR ANUNCIOS</h1>
+        </div>
+        <div *ngFor="let tablaAnuncio of reporte.registrosAnuncio">
+            <table class="table tabla">
+                <thead class="table-dark">
+                    <tr class="bordes">
+                        <td colspan="5"><strong>Anunciante: </strong> {{tablaAnuncio.nombreAnunciante}} </td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="5"><strong>Ganancia total: </strong> {{tablaAnuncio.gananciaTotal}}</td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="5"><strong>Numero de anuncios: </strong> {{tablaAnuncio.numAnuncios}}</td>
+                    </tr>
+                    <tr>
+                        <th>FECHA DE COMPRA</th>
+                        <th>TIPO DE ANUNCIO</th>
+                        <th>PRECIO POR DIA</th>
+                        <th>NUMERO DE DIAS</th>
+                        <th>GANANCIA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let registro of tablaAnuncio.registros">
+                        <td>{{registro.fichaCompra}}</td>
+                        <td>{{registro.tipoAnuncio}}</td>
+                        <td>{{registro.precioPorDia}}</td>
+                        <td>{{registro.numDias}}</td>
+                        <td>{{registro.ganancia}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <br><br>
-    <div style="margin-right: 10px ">
-        <h1>GANANCIAS POR SUSCRIPCIONES</h1>
-    </div>
-
-    <div>
-        <table class="table tabla">
-            <thead class="table-dark">
-                <tr class="bordes">
-                    <td colspan="2"><strong>Revista: </strong> Las historias de lol </td>
-                    <td colspan="3"><strong>Total de ingresos: </strong> 300</td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="2"><strong>Editor: </strong> NombreEditor</td>
-                    <td colspan="3"><strong>Total de costos: </strong> 100</td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="2"><strong>Numero de suscripciones: </strong> 53</td>
-                    <td colspan="3"><strong>Total de ganancias: </strong> 200</td>
-                </tr>
-                <tr>
-                    <th>NOMBRE DE USUARIO</th>
-                    <th>FECHA DE SUSCRIPCION</th>
-                    <th>INGRESO</th>
-                    <th>COSTO</th>
-                    <th>GANANCIA</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Brayan</td>
-                    <td>21/12/21</td>
-                    <td>300</td>
-                    <td>100</td>
-                    <td>200</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- por anuncios -->
-
-    <div style="margin-right: 10px ">
-        <h1>GANANCIAS POR ANUNCIOS</h1>
-    </div>
-    <div>
-        <table class="table tabla">
-            <thead class="table-dark">
-                <tr class="bordes">
-                    <td colspan="5"><strong>Anunciante: </strong> Coca Cola </td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="5"><strong>Ganancia total: </strong> 18</td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="5"><strong>Numero de anuncios: </strong> 6</td>
-                </tr>
-                <tr>
-                    <th>FECHA DE COMPRA</th>
-                    <th>TIPO DE ANUNCIO</th>
-                    <th>PRECIO POR DIA</th>
-                    <th>NUMERO DE DIAS</th>
-                    <th>GANANCIA</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>21/12/21</td>
-                    <td>Brayan</td>
-                    <td>300</td>
-                    <td>100</td>
-                    <td>200</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>

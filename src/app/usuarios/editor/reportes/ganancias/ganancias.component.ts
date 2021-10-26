@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fecha, FechaService } from 'src/app/services/fecha.service';
+import { ReporteGananciaTotalBean } from 'src/control/datos-reportes-editor/ReporteGananciaTotalBean';
+import { ReportesEditorService } from '../../services/reportes-editor.service';
 
 @Component({
   selector: 'app-ganancias',
@@ -9,9 +11,13 @@ import { Fecha, FechaService } from 'src/app/services/fecha.service';
 })
 export class GananciasComponent implements OnInit {
 
+
+  reportes!: ReporteGananciaTotalBean[];
+
   constructor(
     private fb: FormBuilder,
-    private fechaService: FechaService
+    private fechaService: FechaService,
+    private reportesEditorService: ReportesEditorService
   ) { }
 
   ngOnInit(): void {
@@ -26,13 +32,18 @@ export class GananciasComponent implements OnInit {
   });
 
   solicitarReporte() {
-    console.log("Solicitando reporte...");
-  }
-
-  urlPeticionReporte(){
     let fechaInicial = this.miFormulario.get('fechaInicial')?.value;
     let fechaFinal = this.miFormulario.get('fechaFinal')?.value;
-    return `http://localhost:8080/REVISTLAND/controladorReportesAdministrador?reporte=reporteGanancias&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`;
+    this.reportesEditorService.obtenerReporteGanancias(fechaInicial, fechaFinal)
+      .subscribe((res: ReporteGananciaTotalBean[]) => {
+        this.reportes = res;
+      });
+  }
+
+  urlPeticionReporte() {
+    let fechaInicial = this.miFormulario.get('fechaInicial')?.value;
+    let fechaFinal = this.miFormulario.get('fechaFinal')?.value;
+    return `http://localhost:8080/REVISTLAND/controladorReportesEditor?reporte=reporteGanancias&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`;
   }
 
 }

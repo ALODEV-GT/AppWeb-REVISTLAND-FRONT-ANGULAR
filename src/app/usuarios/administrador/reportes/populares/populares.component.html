@@ -21,17 +21,18 @@
     </div>
     <br>
     <br>
-    <div>
+
+    <div *ngFor="let reporte of reportes">
         <table class="table tabla">
             <thead class="table-dark">
                 <tr class="bordes">
-                    <td colspan="3"><strong>Revista: </strong> Las historias de lol </td>
+                    <td colspan="3"><strong>Revista: </strong> {{reporte.datosRevista.nombreRevista}} </td>
                 </tr>
                 <tr class="bordes">
-                    <td colspan="3"><strong>Editor: </strong> NombreEditor</td>
+                    <td colspan="3"><strong>Editor: </strong> {{reporte.datosRevista.nombreEditor}}</td>
                 </tr>
                 <tr class="bordes">
-                    <td colspan="3"><strong>Numero de suscripciones: </strong> 53</td>
+                    <td colspan="3"><strong>Numero de suscripciones: </strong> {{reporte.numSuscripciones}}</td>
                 </tr>
                 <tr>
                     <th>NOMBRE DE USUARIO</th>
@@ -39,9 +40,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Brayan</td>
-                    <td>21/12/21</td>
+                <tr *ngFor="let registro of reporte.suscripciones">
+                    <td>{{registro.nombreUsuario}}</td>
+                    <td>{{registro.fechaSuscripcion}}</td>
                 </tr>
             </tbody>
         </table>

@@ -21,17 +21,18 @@
     </div>
     <br>
     <br>
-    <div>
+    
+    <div *ngFor="let reporte of reportes">
         <table class="table tabla">
             <thead class="table-dark">
                 <tr class="bordes">
-                    <td colspan="3"><strong>Revista: </strong> Las historias de lol </td>
+                    <td colspan="3"><strong>Revista: </strong> {{reporte.datosRevista.nombreRevista}} </td>
                 </tr>
                 <tr class="bordes">
-                    <td colspan="3"><strong>Editor: </strong> NombreEditor</td>
+                    <td colspan="3"><strong>Editor: </strong> {{reporte.datosRevista.nombreEditor}}</td>
                 </tr>
                 <tr class="bordes">
-                    <td colspan="3"><strong>Numero de comentarios: </strong> 53</td>
+                    <td colspan="3"><strong>Numero de comentarios: </strong> {{reporte.numComentarios}}</td>
                 </tr>
                 <tr>
                     <th>NOMBRE DE USUARIO</th>
@@ -40,21 +41,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Brayan</td>
-                    <td>Este es un comentario inecesariamente enorme, que hata parece un testamento
-                        , es posible que sea para realizar pruebas, sin embargo no lo sabremos.
-                        Este es un comentario inecesariamente enorme, que hata parece un testamento
-                        , es posible que sea para realizar pruebas, sin embargo no lo sabremos.
-                        Este es un comentario inecesariamente enorme, que hata parece un testamento
-                        , es posible que sea para realizar pruebas, sin embargo no lo sabremos.
-                        Este es un comentario inecesariamente enorme, que hata parece un testamento
-                        , es posible que sea para realizar pruebas, sin embargo no lo sabremos.
-                    </td>
-                    <td>21/12/21</td>
+                <tr *ngFor="let registro of reporte.comentarios">
+                    <td>{{registro.nombreUsuario}}</td>
+                    <td>{{registro.comentario}} </td>
+                    <td>{{registro.fechaComentario}}</td>
                 </tr>
             </tbody>
         </table>
+        <br>
     </div>
 
 </div>

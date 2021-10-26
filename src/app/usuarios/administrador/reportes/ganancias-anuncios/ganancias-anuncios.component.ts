@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fecha, FechaService } from 'src/app/services/fecha.service';
+import { ReporteGananciaAnuncioBean } from 'src/control/datos-reportes-admin/ReporteGananciaAnuncioBean';
+import { ReportesAdministradorService } from '../../services/reportes-administrador.service';
 
 @Component({
   selector: 'app-ganancias-anuncios',
@@ -9,9 +11,12 @@ import { Fecha, FechaService } from 'src/app/services/fecha.service';
 })
 export class GananciasAnunciosComponent implements OnInit {
 
+  reportes!: ReporteGananciaAnuncioBean[];
+
   constructor(
     private fb: FormBuilder,
-    private fechaService: FechaService
+    private fechaService: FechaService,
+    private reportesAdministradorService: ReportesAdministradorService
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +31,12 @@ export class GananciasAnunciosComponent implements OnInit {
   });
 
   solicitarReporte() {
-    console.log("Solicitando reporte...");
+    let fechaInicial = this.miFormulario.get('fechaInicial')?.value;
+    let fechaFinal = this.miFormulario.get('fechaFinal')?.value;
+    this.reportesAdministradorService.obtenerReporteGananciasPorAnuncio(fechaInicial, fechaFinal)
+      .subscribe((res: ReporteGananciaAnuncioBean[]) => {
+        this.reportes = res;
+      });
   }
 
   urlPeticionReporte(){

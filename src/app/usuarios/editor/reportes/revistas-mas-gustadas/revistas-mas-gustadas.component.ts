@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fecha, FechaService } from 'src/app/services/fecha.service';
+import { ReporteRevistaMasGustadaBean } from 'src/control/datos-reportes-editor/ReporteRevistaMasGustadaBean';
+import { ReportesEditorService } from '../../services/reportes-editor.service';
 
 @Component({
   selector: 'app-revistas-mas-gustadas',
@@ -9,9 +11,12 @@ import { Fecha, FechaService } from 'src/app/services/fecha.service';
 })
 export class RevistasMasGustadasComponent implements OnInit {
 
+  reportes!: ReporteRevistaMasGustadaBean[];
+
   constructor(
     private fb: FormBuilder,
-    private fechaService: FechaService
+    private fechaService: FechaService,
+    private reportesEditorService: ReportesEditorService
   ) { }
 
   ngOnInit(): void {
@@ -26,13 +31,18 @@ export class RevistasMasGustadasComponent implements OnInit {
   });
 
   solicitarReporte() {
-    console.log("Solicitando reporte...");
-  }
-
-  urlPeticionReporte(){
     let fechaInicial = this.miFormulario.get('fechaInicial')?.value;
     let fechaFinal = this.miFormulario.get('fechaFinal')?.value;
-    return `http://localhost:8080/REVISTLAND/controladorReportesAdministrador?reporte=reporteRevistasMasGustadas&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`;
+    this.reportesEditorService.obtenerReporteRevistasMasGustadas(fechaInicial, fechaFinal)
+      .subscribe((res: ReporteRevistaMasGustadaBean[]) => {
+        this.reportes = res;
+      });
+  }
+
+  urlPeticionReporte() {
+    let fechaInicial = this.miFormulario.get('fechaInicial')?.value;
+    let fechaFinal = this.miFormulario.get('fechaFinal')?.value;
+    return `http://localhost:8080/REVISTLAND/controladorReportesEditor?reporte=reporteRevistasMasGustadas&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`;
   }
 
 }

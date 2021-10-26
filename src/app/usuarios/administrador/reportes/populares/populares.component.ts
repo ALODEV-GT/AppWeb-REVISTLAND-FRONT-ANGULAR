@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fecha, FechaService } from 'src/app/services/fecha.service';
+import { ReportePopularesBean } from 'src/control/datos-reportes-admin/ReportePopularesBean';
+import { ReportesAdministradorService } from '../../services/reportes-administrador.service';
 
 @Component({
   selector: 'app-populares',
@@ -9,9 +11,12 @@ import { Fecha, FechaService } from 'src/app/services/fecha.service';
 })
 export class PopularesComponent implements OnInit {
 
+  reportes!: ReportePopularesBean[];
+
   constructor(
     private fb: FormBuilder,
-    private fechaService: FechaService
+    private fechaService: FechaService,
+    private reportesAdministradorService: ReportesAdministradorService
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +31,12 @@ export class PopularesComponent implements OnInit {
   });
 
   solicitarReporte() {
-    console.log("Solicitando reporte...");
+    let fechaInicial = this.miFormulario.get('fechaInicial')?.value;
+    let fechaFinal = this.miFormulario.get('fechaFinal')?.value;
+    this.reportesAdministradorService.obtenerReporteRevistasPopulares(fechaInicial, fechaFinal)
+      .subscribe((res: ReportePopularesBean[]) => {
+        this.reportes = res;
+      });
   }
 
   urlPeticionReporte(){

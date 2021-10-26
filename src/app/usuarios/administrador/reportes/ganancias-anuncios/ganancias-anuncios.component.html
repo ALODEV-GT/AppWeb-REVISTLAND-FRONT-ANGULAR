@@ -21,43 +21,43 @@
             <a class="btn btn-outline-primary" [href]="urlPeticionReporte()">EXPORTAR REPORTE</a>
         </div>
     </div>
-
-    <div class="contenedor d-inline-flex tabla">
-        GANANCIA TOTAL:
-        80
+    <div *ngFor="let reporte of reportes">
+        <div class="contenedor d-inline-flex tabla">
+            GANANCIA TOTAL:
+            {{reporte.gnanciaTotal}}
+        </div>
+        <br>
+        <br>
+        <div *ngFor="let tabla of reporte.tablas">
+            <table class="table tabla">
+                <thead class="table-dark">
+                    <tr class="bordes">
+                        <td colspan="5"><strong>Anunciante: </strong> {{tabla.nombreAnunciante}} </td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="5"><strong>Ganancia total: </strong> {{tabla.gananciaTotal}}</td>
+                    </tr>
+                    <tr class="bordes">
+                        <td colspan="5"><strong>Numero de anuncios: </strong> {{tabla.numAnuncios}}</td>
+                    </tr>
+                    <tr>
+                        <th>FECHA DE COMPRA</th>
+                        <th>TIPO DE ANUNCIO</th>
+                        <th>PRECIO POR DIA</th>
+                        <th>NUMERO DE DIAS</th>
+                        <th>GANANCIA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let registro of tabla.registros">
+                        <td>{{registro.fichaCompra}}</td>
+                        <td>{{registro.tipoAnuncio}}</td>
+                        <td>{{registro.precioPorDia}}</td>
+                        <td>{{registro.numDias}}</td>
+                        <td>{{registro.ganancia}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <br>
-    <br>
-    <div>
-        <table class="table tabla">
-            <thead class="table-dark">
-                <tr class="bordes">
-                    <td colspan="5"><strong>Anunciante: </strong> Coca Cola </td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="5"><strong>Ganancia total: </strong> 18</td>
-                </tr>
-                <tr class="bordes">
-                    <td colspan="5"><strong>Numero de anuncios: </strong> 6</td>
-                </tr>
-                <tr>
-                    <th>FECHA DE COMPRA</th>
-                    <th>TIPO DE ANUNCIO</th>
-                    <th>PRECIO POR DIA</th>
-                    <th>NUMERO DE DIAS</th>
-                    <th>GANANCIA</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>21/12/21</td>
-                    <td>Brayan</td>
-                    <td>300</td>
-                    <td>100</td>
-                    <td>200</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
 </div>
