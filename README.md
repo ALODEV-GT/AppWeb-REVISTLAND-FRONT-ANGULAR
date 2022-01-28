@@ -1,27 +1,59 @@
-# REVISTLAND
+# REVISTLAND (FRONTEND)
+Aplicacion creada para practicar la creacion de aplicaciones web usando Angular.
+Es una aplicacion para publicar y leer revistas. Existen tres tipos de usuarios: administrador, editor y lector.
+La aplicacion maneja un estilo de suscripcion a las revistas, pero tambien existen revistan gratuitas.
+La aplicacion en las paginas generales muestra publicidad que es otra forma de generar ingresos para la empresa.
+Los administradores pueden manejar el modelo de negocio, tambien pueden crear los diferentes anuncios que se mostraran en la aplicacion.
+Los editores pueden publicar revistas, ver las interacciones que le dan a sus revistas y ver o generar diferentes reportes como la de ganancias, suscripciones, etc.
+Los lectores pueden suscribirse a las revistas, comentar y darle like a las revistas.
+La aplicacion recomienda revistas a los lectores de acuerdo o las categorias y etiquetas que tengan definidas en su perfil.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
+## Se uso (aplicacion general):
+- Angular
+- Angular material
+- Patrones de diseno
+- Java
+- Servlets
+- Jasper reports
+- mysql
 
-## Development server
+## Vista previa:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Login
+<p align="center">
+  <kbd>
+   <img src="https://i.ibb.co/j4RDR93/login.png" alt="login" border="0">
+  </kbd>
+</p>
 
-## Code scaffolding
+## Registro
+<p align="center">
+  <kbd>
+   <img src="https://i.ibb.co/LgQGgBW/registro.png" alt="registro" border="0">
+  </kbd>
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Perfil
+<p align="center">
+  <kbd>
+   <img src="https://i.ibb.co/YhP9kG3/perfil.png" alt="perfil" border="0">
+  </kbd>
+</p>
 
-## Build
+### Area administrativa
+<p align="center">
+    <kbd>
+        <img src="https://i.ibb.co/jgcJktg/admin.png" alt="admin" border="0">
+    </kbd>
+</p>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Area de editor
+<p align="center">
+    <kbd>
+        <img src="https://i.ibb.co/DW1cbhs/publicacion.png" alt="publicacion" border="0">
+    </kbd>
+</p>
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Ejecucion:
+En el repositorio siguiente se encuentra el backend y el mapeo fisico para la base de datos.
+BACKEND: https://github.com/MiDIK-BA/AppWeb-REVISTLAND-BACKEND
