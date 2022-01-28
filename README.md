@@ -56,4 +56,5 @@ La aplicacion recomienda revistas a los lectores de acuerdo o las categorias y e
 
 ## Ejecucion:
 En el repositorio siguiente se encuentra el backend y el mapeo fisico para la base de datos.
+
 BACKEND: https://github.com/MiDIK-BA/AppWeb-REVISTLAND-BACKEND
